@@ -34,6 +34,7 @@ const sizeStyles: Record<ButtonSize, ReturnType<typeof css>> = {
     min-height: 54px;
     padding: 20px 30px;
     font-size: 16px;
+    font-weight: 500;
     gap: 6px;
   `,
   lg: css`
