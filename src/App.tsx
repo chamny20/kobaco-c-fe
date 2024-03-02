@@ -1,6 +1,7 @@
 import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from './style/theme';
+import { TestChaemin } from './test/chaemin';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Temp>color theme test</Temp>
         <p>hello world font test</p>
+        <TestChaemin />
       </ThemeProvider>
     </>
   );
