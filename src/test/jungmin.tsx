@@ -1,7 +1,7 @@
 import React from 'react';
 import Chip from '../components/common-components/Chip/Chip';
 import FullTab from '../components/common-components/FullTab';
-import Footer from '../components/common-components/Footer';
+import Tooltips from '../components/common-components/Tooltip';
 
 const TestJungmin = () => {
   const tabs = [
@@ -18,6 +18,7 @@ const TestJungmin = () => {
       content: <div>광고 만들기 내용</div>,
     },
   ];
+  const tooltipContent = 'tooltip 설명 설명';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -31,7 +32,7 @@ const TestJungmin = () => {
       <Chip size="md" shape="rounded" color="green">
         실험실험
       </Chip>
-      <Footer />
+      <Tooltips content={tooltipContent} />
     </div>
   );
 };
