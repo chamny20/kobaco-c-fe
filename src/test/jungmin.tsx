@@ -32,7 +32,7 @@ const TestJungmin = () => {
       <Chip size="md" shape="rounded" color="green">
         실험실험
       </Chip>
-      <Tooltips content={tooltipContent} />
+      <Tooltips content={tooltipContent} direction="bottom-start" />
     </div>
   );
 };

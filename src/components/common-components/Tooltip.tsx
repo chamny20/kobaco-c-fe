@@ -1,11 +1,25 @@
 import * as React from 'react';
 import Tooltip from '@mui/material/Tooltip';
+import Button from './Button/Button';
 
 interface TooltipProps {
   content: string;
+  direction:
+    | 'left-start'
+    | 'left'
+    | 'left-end'
+    | 'right-start'
+    | 'right'
+    | 'right-end'
+    | 'top-start'
+    | 'top'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom'
+    | 'bottom-end';
 }
 
-const Tooltips: React.FC<TooltipProps> = ({ content }) => {
+const Tooltips: React.FC<TooltipProps> = ({ content, direction }) => {
   const [tooltipOpen, setTooltipOpen] = React.useState(false);
 
   const handleTooltipClose = () => {
@@ -40,7 +54,7 @@ const Tooltips: React.FC<TooltipProps> = ({ content }) => {
             </span>
           </div>
         }
-        placement="bottom-end"
+        placement={direction}
         arrow
         PopperProps={{
           disablePortal: true,
@@ -51,12 +65,16 @@ const Tooltips: React.FC<TooltipProps> = ({ content }) => {
         disableHoverListener
         disableTouchListener
       >
-        <h2
-          style={{ cursor: 'pointer' }}
+        <Button
+          style={{
+            width: '32px',
+            height: '32px',
+            cursor: 'pointer',
+          }}
           onClick={() => setTooltipOpen(!tooltipOpen)}
         >
           tooltip
-        </h2>
+        </Button>
       </Tooltip>
     </>
   );
