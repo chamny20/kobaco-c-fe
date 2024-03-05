@@ -1,6 +1,7 @@
 import React from 'react';
 import Chip from '../components/common-components/Chip/Chip';
 import FullTab from '../components/common-components/FullTab';
+import Footer from '../components/common-components/Footer';
 
 const TestJungmin = () => {
   const tabs = [
@@ -30,6 +31,7 @@ const TestJungmin = () => {
       <Chip size="md" shape="rounded" color="green">
         실험실험
       </Chip>
+      <Footer />
     </div>
   );
 };
