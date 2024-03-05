@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import Button from '../components/common-components/Button/Button';
-import { Header } from '../layouts/Header';
 
 export const TestChaemin = () => {
   return (
     <main>
-      <Header />
       <div
         style={{
           display: 'flex',
