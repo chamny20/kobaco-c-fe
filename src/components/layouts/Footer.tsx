@@ -25,7 +25,8 @@ const Footer = () => {
           fontWeight: '400',
           whiteSpace: 'pre-line',
           wordWrap: 'break-word',
-          width: '200px',
+          maxWidth: '50%',
+          width: '100%',
           textAlign: 'left',
         }}
       >
@@ -51,7 +52,8 @@ const Footer = () => {
           fontWeight: '400',
           whiteSpace: 'pre-line',
           wordWrap: 'break-word',
-          width: '300px',
+          maxWidth: '100%',
+          width: '75%',
         }}
       >
         Copyright(C) Korea Broadcast Advertising Corp.

@@ -1,12 +1,9 @@
-import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
 
-const Layout = () => {
+const Layout = (props: { children: React.ReactNode }) => {
   return (
     <>
-      <main>
-        <Outlet />
-      </main>
+      <main>{props.children}</main>
       <Footer />
     </>
   );
