@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import logo from '../../assets/kobaco_logo.png';
 
 export const Header = () => {
   return (
     <HeaderContainer>
       <Container>
         <div className="left-box">
-          <div>logo</div>
+          <img src={logo} alt="kobaco" />
           <div className="wrapper-left">
             <div>트렌드 분석</div>
             <div>광고 아카이브</div>
@@ -59,6 +60,12 @@ export const Container = styled.div`
     display: flex;
     gap: 87px;
     align-items: center;
+
+    img {
+      object-fit: cover;
+      align-items: center;
+      display: flex;
+    }
 
     .wrapper-left {
       color: ${(props) => props.theme.gray_01};
