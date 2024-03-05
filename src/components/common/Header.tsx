@@ -43,6 +43,7 @@ export const HeaderContainer = styled.div`
   height: 100px;
   padding: 0px 20px;
   box-sizing: border-box;
+  background-color: white;
 `;
 
 export const Container = styled.div`
