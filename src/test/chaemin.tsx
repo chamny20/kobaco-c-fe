@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { Card } from '../components/common-components/Card/Card';
 import { Modal } from '../components/common-components/Modal';
 import { useState } from 'react';
+import { Input } from '../components/common-components/Input/Input';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>('');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
       {/* <div>hello world</div>
@@ -28,6 +30,20 @@ export const TestChaemin = () => {
             area is content area hihi this area is content area
           </div>
         </Card>
+
+        <Input
+          placeholder="검색어 입력해"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          size="lg"
+          style={{ width: '300px' }}
+        />
+        <Input
+          placeholder="검색어 입력해"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          size="sm"
+        />
 
         <button onClick={() => setShow(true)}>modal open</button>
         <Modal open={show} onClose={() => setShow(false)}>
