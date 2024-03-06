@@ -1,28 +1,16 @@
 import './App.css';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { theme } from './style/theme';
-import { TestChaemin } from './test/chaemin';
-import TestJungmin from './test/jungmin';
-import Layout from './components/layouts/Layout';
+import { Router } from './router/router';
 
 function App() {
   return (
     <>
-      <Layout>
-        <ThemeProvider theme={theme}>
-          <Temp>color theme test</Temp>
-          <p>hello world font test</p>
-          <TestChaemin />
-          <TestJungmin />
-        </ThemeProvider>
-      </Layout>
+      <ThemeProvider theme={theme}>
+        <Router />
+      </ThemeProvider>
     </>
   );
 }
-
-const Temp = styled.div`
-  background-color: ${(props) => props.theme.red_01};
-  border: 1px solid red;
-`;
 
 export default App;
