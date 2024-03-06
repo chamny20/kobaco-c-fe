@@ -1,36 +1,91 @@
+import styled from 'styled-components';
 import footer1 from '../../assets/footer1.png';
+
+const StyledFooter = styled.div`
+  width: 100%;
+  background: #e6e6e6;
+  position: absolute;
+  bottom: 0;
+
+  .background {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #e6e6e6;
+  }
+
+  .address {
+    left: 310px;
+    top: 181px;
+    position: absolute;
+    color: #7b7b7b;
+    font-size: 14px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    white-space: pre-line;
+    word-wrap: break-word;
+    max-width: 50%;
+    width: 100%;
+    text-align: left;
+  }
+
+  .copyright {
+    left: 1323px;
+    top: 231px;
+    position: absolute;
+    text-align: right;
+    color: #7b7b7b;
+    font-size: 14px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    white-space: pre-line;
+    word-wrap: break-word;
+    max-width: 100%;
+    width: 17%;
+  }
+
+  .navigation {
+    width: 506px;
+    height: 25px;
+    left: 1105px;
+    top: 69px;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    display: inline-flex;
+
+    div {
+      color: #373d49;
+      font-size: 14px;
+      font-family: 'Pretendard';
+      font-weight: 500;
+      word-wrap: break-word;
+    }
+
+    .divider {
+      width: 0;
+      height: 13.5px;
+      border: 1px #7b7b7b solid;
+    }
+  }
+
+  .footerImage {
+    width: 350px;
+    height: 61px;
+    left: 310px;
+    top: 69px;
+    position: absolute;
+  }
+`;
 
 const Footer = () => {
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <div
-        style={{
-          width: 1920,
-          height: 350,
-          left: 0,
-          top: 0,
-          position: 'absolute',
-          background: '#E6E6E6',
-        }}
-      />
-
-      <div
-        style={{
-          left: 310,
-          top: 181,
-          position: 'absolute',
-          color: '#7B7B7B',
-          fontSize: 14,
-          fontFamily: 'Pretendard',
-          fontWeight: '400',
-          whiteSpace: 'pre-line',
-          wordWrap: 'break-word',
-          maxWidth: '50%',
-          width: '100%',
-          textAlign: 'left',
-        }}
-      >
-        {' '}
+    <StyledFooter>
+      <div className="background" />
+      <div className="address">
         주소: 서울시 중구 세종대로 124
         <br />
         담당부서: 지능 정보 사업팀
@@ -39,107 +94,22 @@ const Footer = () => {
         <br />
         이용문의: 카카오톡 kobaco AiSAC
       </div>
-
-      <div
-        style={{
-          left: 1323,
-          top: 231,
-          position: 'absolute',
-          textAlign: 'right',
-          color: '#7B7B7B',
-          fontSize: 14,
-          fontFamily: 'Pretendard',
-          fontWeight: '400',
-          whiteSpace: 'pre-line',
-          wordWrap: 'break-word',
-          maxWidth: '100%',
-          width: '75%',
-        }}
-      >
+      <div className="copyright">
         Copyright(C) Korea Broadcast Advertising Corp.
         <br />
         All Rights Reserved
       </div>
-
-      <div
-        style={{
-          width: 506,
-          height: 25,
-          left: 1105,
-          top: 69,
-          position: 'absolute',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          gap: 20,
-          display: 'inline-flex',
-        }}
-      >
-        <div
-          style={{
-            color: '#373D49',
-            fontSize: 14,
-            fontFamily: 'Pretendard',
-            fontWeight: '500',
-            wordWrap: 'break-word',
-          }}
-        >
-          AiSAC이란?
-        </div>
-        <div
-          style={{ width: 0, height: 13.5, border: '1px #7B7B7B solid' }}
-        ></div>
-        <div
-          style={{
-            color: '#373D49',
-            fontSize: 14,
-            fontFamily: 'Pretendard',
-            fontWeight: '500',
-            wordWrap: 'break-word',
-          }}
-        >
-          서비스 이용약관
-        </div>
-        <div
-          style={{ width: 0, height: 13.5, border: '1px #7B7B7B solid' }}
-        ></div>
-        <div
-          style={{
-            color: '#373D49',
-            fontSize: 14,
-            fontFamily: 'Pretendard',
-            fontWeight: '500',
-            wordWrap: 'break-word',
-          }}
-        >
-          개인정보 처리방침
-        </div>
-        <div
-          style={{ width: 0, height: 13.5, border: '1px #7B7B7B solid' }}
-        ></div>
-        <div
-          style={{
-            color: '#373D49',
-            fontSize: 14,
-            fontFamily: 'Pretendard',
-            fontWeight: '500',
-            wordWrap: 'break-word',
-          }}
-        >
-          이메일 무단수집 거부
-        </div>
+      <div className="navigation">
+        <div>AiSAC이란?</div>
+        <div className="divider" />
+        <div>서비스 이용약관</div>
+        <div className="divider" />
+        <div>개인정보 처리방침</div>
+        <div className="divider" />
+        <div>이메일 무단수집 거부</div>
       </div>
-
-      <img
-        style={{
-          width: 350,
-          height: 61,
-          left: 310,
-          top: 69,
-          position: 'absolute',
-        }}
-        src={footer1}
-      />
-    </div>
+      <img className="footerImage" src={footer1} alt="footer" />
+    </StyledFooter>
   );
 };
 
