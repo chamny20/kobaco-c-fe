@@ -1,0 +1,45 @@
+.enter {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.enterFrom {
+  opacity: 0;
+}
+
+.enterFromModal {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.enterTo {
+  opacity: 1;
+}
+
+.enterToModal {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.leave {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 100ms;
+}
+
+.leaveFrom {
+  opacity: 100;
+}
+
+.leaveFromModal {
+  opacity: 100;
+  transform: scale(1);
+}
+
+.leaveTo {
+  opacity: 0;
+}
+
+.leaveToModal {
+  opacity: 0;
+  transform: scale(0.95);
+}
