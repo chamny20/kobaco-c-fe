@@ -7,6 +7,13 @@ const StyledFooter = styled.div`
   position: absolute;
   bottom: 0;
 
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
   .background {
     width: 100%;
     height: 350px;
@@ -14,6 +21,13 @@ const StyledFooter = styled.div`
     left: 0;
     top: 0;
     background: #e6e6e6;
+  }
+
+  .address,
+  .copyright,
+  .navigation,
+  .footerImage {
+    max-width: 100%;
   }
 
   .address {
@@ -83,30 +97,32 @@ const Footer = () => {
   return (
     <StyledFooter>
       <div className="background" />
-      <div className="address">
-        주소: 서울시 중구 세종대로 124
-        <br />
-        담당부서: 지능 정보 사업팀
-        <br />
-        02)731-7350
-        <br />
-        이용문의: 카카오톡 kobaco AiSAC
+      <div className="container">
+        <div className="address">
+          주소: 서울시 중구 세종대로 124
+          <br />
+          담당부서: 지능 정보 사업팀
+          <br />
+          02)731-7350
+          <br />
+          이용문의: 카카오톡 kobaco AiSAC
+        </div>
+        <div className="copyright">
+          Copyright(C) Korea Broadcast Advertising Corp.
+          <br />
+          All Rights Reserved
+        </div>
+        <div className="navigation">
+          <div>AiSAC이란?</div>
+          <div className="divider" />
+          <div>서비스 이용약관</div>
+          <div className="divider" />
+          <div>개인정보 처리방침</div>
+          <div className="divider" />
+          <div>이메일 무단수집 거부</div>
+        </div>
+        <img className="footerImage" src={footer1} alt="footer" />
       </div>
-      <div className="copyright">
-        Copyright(C) Korea Broadcast Advertising Corp.
-        <br />
-        All Rights Reserved
-      </div>
-      <div className="navigation">
-        <div>AiSAC이란?</div>
-        <div className="divider" />
-        <div>서비스 이용약관</div>
-        <div className="divider" />
-        <div>개인정보 처리방침</div>
-        <div className="divider" />
-        <div>이메일 무단수집 거부</div>
-      </div>
-      <img className="footerImage" src={footer1} alt="footer" />
     </StyledFooter>
   );
 };
