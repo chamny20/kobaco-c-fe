@@ -17,7 +17,7 @@ const StyledFooter = styled.div`
   }
 
   .address {
-    left: 310px;
+    left: 5%;
     top: 181px;
     position: absolute;
     color: #7b7b7b;
@@ -32,7 +32,7 @@ const StyledFooter = styled.div`
   }
 
   .copyright {
-    left: 1323px;
+    left: 71%;
     top: 231px;
     position: absolute;
     text-align: right;
@@ -47,9 +47,7 @@ const StyledFooter = styled.div`
   }
 
   .navigation {
-    width: 506px;
-    height: 25px;
-    left: 1105px;
+    left: 60%;
     top: 69px;
     position: absolute;
     justify-content: flex-start;
@@ -75,7 +73,7 @@ const StyledFooter = styled.div`
   .footerImage {
     width: 350px;
     height: 61px;
-    left: 310px;
+    left: 5%;
     top: 69px;
     position: absolute;
   }
