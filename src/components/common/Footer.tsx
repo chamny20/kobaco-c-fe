@@ -4,7 +4,7 @@ import footer1 from '../../assets/footer1.png';
 const StyledFooter = styled.div`
   width: 100%;
   background: #e6e6e6;
-  position: absolute;
+  position: relative;
   bottom: 0;
 
   .container {

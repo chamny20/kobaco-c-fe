@@ -61,6 +61,7 @@ export const InputButton = styled.button<{ size?: InputSize }>`
   right: 20px;
   color: white;
   border-radius: 8px;
+  border: none;
   background-color: ${(props) => props.theme.red_01};
   font-size: ${({ size }) => (size === 'sm' ? '12px' : '16px')};
   box-sizing: border-box;
