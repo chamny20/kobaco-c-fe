@@ -17,6 +17,7 @@ const baseStyles = css`
   padding: 0;
   font-weight: bold;
   cursor: pointer;
+  border: none;
   transition: background-color 0.1s ease-in-out;
   &.disabled {
     cursor: default;
