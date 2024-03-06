@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { ScrollContainer } from '../../components/animation/ScrollContainer';
+import back_img from '../../assets/landing/view2_img.png';
 
 export const SecondView = () => {
   return (
     <ViewContainer>
       <ScrollContainer>
         <div className="content">
-          <div>image</div>
+          <img src={back_img} alt="" />
           <div className="view-text">
             <div>
               <span>Al analysis System for AD Creation</span>
@@ -29,7 +30,6 @@ export const SecondView = () => {
 export const ViewContainer = styled.div`
   width: 100vw;
   height: 806px;
-  border: 1px solid black;
   background-color: white;
   padding: 200px 0px;
   box-sizing: border-box;
@@ -41,6 +41,10 @@ export const ViewContainer = styled.div`
     justify-content: center;
     gap: 10px;
 
+    img {
+      margin-right: 54px;
+    }
+
     .view-text {
       display: flex;
       flex-direction: column;
@@ -48,7 +52,7 @@ export const ViewContainer = styled.div`
 
       div {
         color: ${(props) => props.theme.gray_02};
-        font-size: 30px;
+        font-size: 29px;
         font-style: normal;
         font-weight: 400;
         line-height: 180%;
