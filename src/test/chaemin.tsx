@@ -32,17 +32,18 @@ export const TestChaemin = () => {
         </Card>
 
         <Input
-          placeholder="검색어 입력해"
+          placeholder="검색어를 입력해주세요."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           size="lg"
-          style={{ width: '300px' }}
+          style={{ width: '500px' }}
         />
         <Input
-          placeholder="검색어 입력해"
+          placeholder="검색어를 입력해주세요."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           size="sm"
+          style={{ width: '400px' }}
         />
 
         <button onClick={() => setShow(true)}>modal open</button>
