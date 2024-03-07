@@ -1,11 +1,16 @@
+import { ScrollContainer } from '../../components/animation/ScrollContainer';
 import { PopularItem } from './PopularItem';
 import { SearchBanner } from './SearchBanner';
 
 export const TrendPage = () => {
   return (
     <>
-      <SearchBanner />
-      <PopularItem />
+      <ScrollContainer>
+        <SearchBanner />
+      </ScrollContainer>
+      <ScrollContainer>
+        <PopularItem />
+      </ScrollContainer>
     </>
   );
 };
