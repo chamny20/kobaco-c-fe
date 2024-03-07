@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 import logo from '../../assets/kobaco_logo.png';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const spaceTo = (page: string) => {
+    navigate(page);
+  };
+
   return (
     <HeaderContainer>
       <Container>
         <div className="left-box">
-          <img src={logo} alt="kobaco" />
+          <img src={logo} alt="kobaco" onClick={() => spaceTo('/')} />
           <div className="wrapper-left">
-            <div>트렌드 분석</div>
+            <div onClick={() => spaceTo('/trend')}>트렌드 분석</div>
             <div>광고 아카이브</div>
             <div>광고 만들기</div>
           </div>
@@ -65,6 +72,7 @@ export const Container = styled.div`
       object-fit: cover;
       align-items: center;
       display: flex;
+      cursor: pointer;
     }
 
     .wrapper-left {
