@@ -189,6 +189,8 @@ export const RankDataContainer = styled.div`
   .rank-item {
     display: flex;
     gap: 30px;
+    padding: 0px 3px;
+    box-sizing: border-box;
 
     p {
       color: ${(props) => props.theme.gray_01};
