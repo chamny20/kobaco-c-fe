@@ -94,8 +94,9 @@ export const Coupang = () => {
             onChange={handleChange}
             MenuProps={MenuProps}
             displayEmpty
+            sx={{ fontFamily: 'Pretendard' }}
           >
-            <MenuItem disabled value="">
+            <MenuItem disabled value="" sx={{ fontFamily: 'Pretendard' }}>
               카테고리를 선택하세요.
             </MenuItem>
             {selectItems.map((item, idx) => {
@@ -103,6 +104,7 @@ export const Coupang = () => {
                 <MenuItem
                   value={item}
                   key={idx}
+                  sx={{ fontFamily: 'Pretendard' }}
                   style={{ padding: '15px', boxSizing: 'border-box' }}
                 >
                   {item}
@@ -112,28 +114,30 @@ export const Coupang = () => {
           </Select>
         </FormControl>
       </Box>
-      <RankCard>
-        <RankDataContainer>
-          {filteredData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="rank-item"
-                style={
-                  item.id === 1
-                    ? { color: '#d33b4d', fontWeight: '700' }
-                    : item.id < 4
-                      ? { color: '#373D49', fontWeight: '700' }
-                      : { color: '#909090', fontWeight: '500' }
-                }
-              >
-                <span>{item.id}</span>
-                <span>{item.value}</span>
-              </div>
-            );
-          })}
-        </RankDataContainer>
-      </RankCard>
+      {item && (
+        <RankCard>
+          <RankDataContainer>
+            {filteredData.map((item) => {
+              return (
+                <div
+                  key={item.id}
+                  className="rank-item"
+                  style={
+                    item.id === 1
+                      ? { color: '#d33b4d', fontWeight: '700' }
+                      : item.id < 4
+                        ? { color: '#373D49', fontWeight: '700' }
+                        : { color: '#909090', fontWeight: '500' }
+                  }
+                >
+                  <span>{item.id}</span>
+                  <span>{item.value}</span>
+                </div>
+              );
+            })}
+          </RankDataContainer>
+        </RankCard>
+      )}
     </BasicCardContainer>
   );
 };
