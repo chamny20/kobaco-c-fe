@@ -4,10 +4,12 @@ import { TestChaemin } from '../test/chaemin';
 import LandingPage from '../pages/landing/LandingPage';
 import TestJungmin from '../test/jungmin';
 import { TrendPage } from '../pages/trend/TrendPage';
+import ScrollToTop from '../components/ScrollToTop';
 
 export const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
