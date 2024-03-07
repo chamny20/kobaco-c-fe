@@ -40,18 +40,41 @@ export const Coupang = () => {
     '더미5',
   ];
 
-  const rankingData = [
-    { id: 1, value: '반팔 티셔츠' },
-    { id: 2, value: 'ㅇㅇ 티셔츠' },
-    { id: 3, value: 'ㄴㄴ 티셔츠' },
-    { id: 4, value: 'ㄴㄴ 티셔츠' },
-    { id: 5, value: 'ㅁㅁ 티셔츠' },
-    { id: 6, value: 'ㅍ 티셔츠' },
-    { id: 7, value: '2 티셔츠' },
-    { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
-    { id: 9, value: 'ㅁㅋ 티셔츠' },
-    { id: 10, value: 'ㅌㅌ 티셔츠' },
+  const rankData = [
+    {
+      selectedItem: '여성패션',
+      data: [
+        { id: 1, value: '반팔 티셔츠' },
+        { id: 2, value: '여성 티셔츠' },
+        { id: 3, value: 'ㄴㄴ 티셔츠' },
+        { id: 4, value: 'ㄴㄴ 티셔츠' },
+        { id: 5, value: 'ㅁㅁ 티셔츠' },
+        { id: 6, value: 'ㅍ 티셔츠' },
+        { id: 7, value: '2 티셔츠' },
+        { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
+        { id: 9, value: 'ㅁㅋ 티셔츠' },
+        { id: 10, value: 'ㅌㅌ 티셔츠' },
+      ],
+    },
+    {
+      selectedItem: '남성패션',
+      data: [
+        { id: 1, value: '남성 티셔츠' },
+        { id: 2, value: '남성 티셔츠' },
+        { id: 3, value: 'ㄴㄴ 남성' },
+        { id: 4, value: 'ㄴㄴ 남성' },
+        { id: 5, value: 'ㅁㅁ 남성' },
+        { id: 6, value: 'ㅍ 티셔츠' },
+        { id: 7, value: '2 티셔츠' },
+        { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
+        { id: 9, value: 'ㅁㅋ 티셔츠' },
+        { id: 10, value: 'ㅌㅌ 티셔츠' },
+      ],
+    },
   ];
+
+  const filteredData =
+    rankData.find((data) => data.selectedItem === item)?.data || [];
 
   return (
     <BasicCardContainer>
@@ -90,15 +113,26 @@ export const Coupang = () => {
         </FormControl>
       </Box>
       <RankCard>
-        {rankingData.map((item) => {
-          return (
-            <div key={item.id}>
-              <span>{item.id}</span>
-              <span>{item.value}</span>
-            </div>
-          );
-        })}
-        <div></div>
+        <RankDataContainer>
+          {filteredData.map((item) => {
+            return (
+              <div
+                key={item.id}
+                className="rank-item"
+                style={
+                  item.id === 1
+                    ? { color: '#d33b4d', fontWeight: '700' }
+                    : item.id < 4
+                      ? { color: '#373D49', fontWeight: '700' }
+                      : { color: '#909090', fontWeight: '500' }
+                }
+              >
+                <span>{item.id}</span>
+                <span>{item.value}</span>
+              </div>
+            );
+          })}
+        </RankDataContainer>
       </RankCard>
     </BasicCardContainer>
   );
@@ -108,13 +142,10 @@ export const BasicCardContainer = styled.div`
   display: flex;
   padding: 40px;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
-  align-self: stretch;
-  max-width: 303px;
+  max-width: 200px;
   width: 100%;
   gap: 30px;
-  //
   border-radius: 20px;
   border: 1px solid ${(props) => props.theme.gray_05};
   background: #fff;
@@ -143,5 +174,37 @@ export const BasicCardContainer = styled.div`
       line-height: normal;
       letter-spacing: -0.4px;
     }
+  }
+`;
+
+export const RankDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  gap: 12px;
+  margin: 12px;
+  box-sizing: border-box;
+
+  .rank-item {
+    display: flex;
+    gap: 30px;
+
+    p {
+      color: ${(props) => props.theme.gray_01};
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.4px;
+    }
+  }
+
+  .rank-box {
+    /* padding-left: 20px; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 `;
