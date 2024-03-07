@@ -8,7 +8,7 @@ import { FifthView } from './FifthView';
 
 export default function LandingPage() {
   useEffect(() => {
-    document.getElementById('app')?.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   return (
