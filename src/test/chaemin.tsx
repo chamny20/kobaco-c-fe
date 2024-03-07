@@ -4,6 +4,7 @@ import { Card } from '../components/common-components/Card/Card';
 import { Modal } from '../components/common-components/Modal';
 import { useState } from 'react';
 import { Input } from '../components/common-components/Input/Input';
+import { AdvertisementItem } from '../components/advertisement/AdvertisementItem';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -30,6 +31,15 @@ export const TestChaemin = () => {
             area is content area hihi this area is content area
           </div>
         </Card>
+
+        <AdvertisementItem
+          title="difjaliejf"
+          time={10}
+          videoUrl="aliejfai"
+          createdAt="2020-02-02"
+          advertisementId={1}
+          isArchived
+        />
 
         <Input
           placeholder="검색어를 입력해주세요."
