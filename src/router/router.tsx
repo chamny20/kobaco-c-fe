@@ -5,6 +5,7 @@ import LandingPage from '../pages/landing/LandingPage';
 import TestJungmin from '../test/jungmin';
 import { TrendPage } from '../pages/trend/TrendPage';
 import ScrollToTop from '../components/ScrollToTop';
+import { SearchPage } from '../pages/searchAnalysis/SearchPage';
 
 export const Router = () => {
   return (
@@ -14,6 +15,7 @@ export const Router = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/trend" element={<TrendPage />} />
+          <Route path="/search" element={<SearchPage />} />
 
           {/* test */}
           <Route path="/test" element={<TestChaemin />} />
