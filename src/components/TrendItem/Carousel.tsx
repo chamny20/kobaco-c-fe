@@ -172,7 +172,7 @@ const Carousel = () => {
 
 export const CarouselContainer = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 810px;
   height: 100%;
 `;
 
