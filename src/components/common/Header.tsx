@@ -13,7 +13,12 @@ export const Header = () => {
     <HeaderContainer>
       <Container>
         <div className="left-box">
-          <img src={logo} alt="kobaco" />
+          <img
+            src={logo}
+            alt="kobaco"
+            onClick={() => spaceTo('/')}
+            style={{ cursor: 'pointer' }}
+          />
           <div className="wrapper-left">
             <div onClick={() => spaceTo('/trend')}>트렌드 분석</div>
             <div>광고 아카이브</div>
