@@ -51,7 +51,7 @@ export const BasicCardContainer = styled.div`
 
     span {
       color: ${(props) => props.theme.gray_01};
-      font-size: 20px;
+      font-size: 17px;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
