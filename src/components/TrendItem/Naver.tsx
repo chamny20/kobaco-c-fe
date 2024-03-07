@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import logo from '../../assets/trend/naver.png';
+import Carousel from './Carousel';
 
 export const Naver = () => {
   return (
@@ -11,7 +12,9 @@ export const Naver = () => {
           <span>월간 인기 검색어</span>
         </div>
       </div>
-      <div>캐러셀</div>
+      <CarouselWrapper>
+        <Carousel />
+      </CarouselWrapper>
     </BasicCardContainer>
   );
 };
@@ -20,10 +23,10 @@ export const BasicCardContainer = styled.div`
   display: flex;
   padding: 40px;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
+  /* align-items: flex-start; */
+  /* align-self: stretch; */
   width: 100%;
+  max-width: 967px;
   gap: 30px;
   //
   border-radius: 20px;
@@ -55,4 +58,8 @@ export const BasicCardContainer = styled.div`
       letter-spacing: -0.4px;
     }
   }
+`;
+
+export const CarouselWrapper = styled.div`
+  margin: 0 auto;
 `;
