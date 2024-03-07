@@ -47,7 +47,7 @@ export const HeaderContainer = styled.div`
   user-select: none;
 
   border: 1px solid black;
-  width: 100%;
+  width: 100vw;
   height: 100px;
   padding: 0px 20px;
   box-sizing: border-box;
