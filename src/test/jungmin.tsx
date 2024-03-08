@@ -7,6 +7,7 @@ import MonthChart from '../components/chart/MonthChart';
 import WeekChart from '../components/chart/WeekChart';
 import AgeChart from '../components/chart/AgeChart';
 import KeywordChart from '../components/chart/KeywordChart';
+import InstaChart from '../components/chart/InstaChart';
 
 const TestJungmin = () => {
   const tabs = [
@@ -43,6 +44,7 @@ const TestJungmin = () => {
       <WeekChart />
       <SexChart />
       <KeywordChart />
+      <InstaChart />
     </div>
   );
 };
