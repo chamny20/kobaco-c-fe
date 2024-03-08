@@ -13,6 +13,7 @@ import {
   dummyData,
 } from '../components/advertisement-archive/AdvertisementList';
 import { SimilarItem } from '../components/advertisement-detail/SimilarItem';
+import { AdvAnalysis } from '../components/advertisement-detail/AdvAnalysis';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -33,6 +34,8 @@ export const TestChaemin = () => {
       <div style={{ margin: '10px 30px' }}>
         <SelectFilter placeholder="표정 분석" filterData={expressionCategory} />
       </div>
+
+      <AdvAnalysis />
 
       <div>
         <Card title="검색량" subTitle="서브타이틀테스트트트트틑트트ㅡ">
