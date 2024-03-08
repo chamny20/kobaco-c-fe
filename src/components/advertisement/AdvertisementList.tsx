@@ -133,6 +133,8 @@ export const AdvertisementListContainer = styled.div`
   width: 100%;
   border: 1px solid green;
   margin: 0 auto;
+  padding: 120px 0px;
+  box-sizing: border-box;
 `;
 
 export const ListWrapper = styled.div`
