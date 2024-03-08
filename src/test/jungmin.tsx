@@ -5,6 +5,7 @@ import Tooltips from '../components/common-components/Tooltip';
 import SexChart from '../components/chart/SexChart';
 import MonthChart from '../components/chart/MonthChart';
 import WeekChart from '../components/chart/WeekChart';
+import AgeChart from '../components/chart/AgeChart';
 
 const TestJungmin = () => {
   const tabs = [
@@ -36,6 +37,7 @@ const TestJungmin = () => {
         실험실험
       </Chip>
       <Tooltips content={tooltipContent} direction="bottom-start" />
+      <AgeChart />
       <MonthChart />
       <WeekChart />
       <SexChart />
