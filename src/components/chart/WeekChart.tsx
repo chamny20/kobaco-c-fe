@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   BarChart,
   Bar,
@@ -9,10 +9,17 @@ import {
   CartesianGrid,
   Cell,
 } from 'recharts';
-import { getTrendTime } from '../../api/trend';
-const MonthChart = () => {
-  const [chartData, setChartData] = useState([]);
-  const trendKwd = '검색어';
+
+const data = [
+  { name: '월', uv: 13, pv: 2400, amt: 2400 },
+  { name: '화', uv: 7, pv: 2400, amt: 2400 },
+  { name: '수', uv: 3, pv: 2400, amt: 2400 },
+  { name: '목', uv: 10, pv: 2400, amt: 2400 },
+  { name: '금', uv: 2, pv: 2400, amt: 2400 },
+];
+
+const WeekChart = () => {
+  const percent = (value: number) => `${value}%`;
 
   const barColor = (entry: { uv: number }) => {
     if (entry.uv >= 15) {
@@ -26,29 +33,14 @@ const MonthChart = () => {
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await getTrendTime({ trendKwd });
-      const data = response.data;
-
-      setChartData(data);
-    } catch (error) {
-      console.error('Error fetching trend time data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [trendKwd]);
-
   return (
     <>
-      <BarChart width={600} height={300} data={chartData}>
+      <BarChart width={600} height={300} data={data}>
         <XAxis dataKey="name" stroke="#474750" />
         <YAxis
-          tickFormatter={(value) => `${value}%`}
-          domain={[0, 20]} // y축의 표시 범위를 지정
-          ticks={[0, 5, 10, 15, 20]} // y축의 표시 값 설정
+          tickFormatter={percent}
+          domain={[0, 15]}
+          ticks={[0, 5, 10, 15]}
         />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
         <Legend
@@ -64,7 +56,7 @@ const MonthChart = () => {
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
         <Bar dataKey="uv" barSize={30}>
-          {chartData.map((entry, index) => (
+          {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={barColor(entry)} />
           ))}
         </Bar>
@@ -73,4 +65,4 @@ const MonthChart = () => {
   );
 };
 
-export default MonthChart;
+export default WeekChart;
