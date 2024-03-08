@@ -17,6 +17,7 @@ export const CustomCheckBox = ({
   return (
     <Checkbox
       {...label}
+      size="small"
       sx={{
         color: pink[800],
         '&.Mui-checked': {
