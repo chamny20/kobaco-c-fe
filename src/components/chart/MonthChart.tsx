@@ -5,7 +5,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   CartesianGrid,
   Cell,
 } from 'recharts';
@@ -50,26 +49,15 @@ const MonthChart = () => {
 
   return (
     <>
-      <BarChart width={600} height={300} data={chartData}>
-        <XAxis dataKey="month" stroke="#474750" />
+      <BarChart width={620.76} height={383} data={chartData}>
+        <XAxis dataKey="month" stroke="#A0A0A0" />
         <YAxis
           tickFormatter={(value) => `${value}%`}
           domain={[0, 20]}
           ticks={[0, 5, 10, 15, 20]}
         />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-        <Legend
-          width={100}
-          wrapperStyle={{
-            top: 40,
-            right: 20,
-            backgroundColor: '#f5f5f5',
-            border: '1px solid #d5d5d5',
-            borderRadius: 3,
-            lineHeight: '40px',
-          }}
-        />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <CartesianGrid strokeDasharray="7 7" vertical={false} />{' '}
         <Bar dataKey="ratio" barSize={30}>
           {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={barColor(entry)} />
