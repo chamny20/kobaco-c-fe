@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { AdvertiseItemProps, AdvertisementItem } from './AdvertisementItem';
-import { Menu, MenuItem } from '@mui/material';
+import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
@@ -68,6 +68,17 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   };
   const [sort, setSort] = useState<string>('최신순');
 
+  // pagination
+  const itemsPerPage = 16;
+  const [page, setPage] = useState<number>(1);
+  const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedData = data.slice(startIndex, endIndex);
+
   return (
     <AdvertisementListContainer>
       <div>
@@ -111,7 +122,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
         </Menu>
       </div>
       <ListWrapper>
-        {data.map((item) => {
+        {displayedData.map((item) => {
           return (
             <AdvertisementItem
               key={item.advertisementId}
@@ -124,6 +135,28 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
           );
         })}
       </ListWrapper>
+      <Stack
+        spacing={2}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '70px',
+
+          '& .MuiPaginationItem-page': {
+            '&.Mui-selected': {
+              backgroundColor: '#dc6271',
+              color: 'white',
+            },
+          },
+        }}
+      >
+        <Pagination
+          count={Math.ceil(data.length / itemsPerPage)}
+          page={page}
+          onChange={handleChange}
+        />
+      </Stack>
     </AdvertisementListContainer>
   );
 };
