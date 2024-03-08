@@ -12,7 +12,6 @@ import {
   AdvertisementList,
   dummyData,
 } from '../components/advertisement/AdvertisementList';
-import { AdvertiseItemProps } from '../components/advertisement/AdvertisementItem';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
