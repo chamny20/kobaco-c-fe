@@ -4,7 +4,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   CartesianGrid,
   Area,
 } from 'recharts';
@@ -26,7 +25,7 @@ const KeywordChart = () => {
       const transformedData = apiData.monthStatisticResponseList.map(
         (item: { month: string; ratio: number }) => ({
           name: item.month,
-          uv: item.ratio,
+          uv: item.ratio * 5,
         })
       );
 
@@ -44,7 +43,7 @@ const KeywordChart = () => {
     <>
       <AreaChart
         width={730}
-        height={250}
+        height={350}
         data={chartData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >
@@ -60,15 +59,13 @@ const KeywordChart = () => {
             ))}
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" stroke="#474750" />
+        <XAxis dataKey="name" stroke="#A0A0A0" />
         <YAxis
-          tickFormatter={(value) => `${value}%`}
-          domain={[0, 20]}
-          ticks={[0, 5, 10, 15, 20]}
+          tickFormatter={(value) => `${value}`}
+          domain={[0, 100]}
+          ticks={[0, 20, 40, 60, 80, 100]}
         />
-        <CartesianGrid strokeDasharray="3 3" />
-        <Tooltip />
-        <Legend />
+        <CartesianGrid strokeDasharray="7 7" vertical={false} /> <Tooltip />
         <Area
           type="linear"
           dataKey="uv"

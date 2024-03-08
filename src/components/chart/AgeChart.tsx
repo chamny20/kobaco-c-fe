@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getTrendPerson } from '../../api/trend';
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  Tooltip,
-  Legend,
-  Cell,
-  LabelList,
-} from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, Cell, LabelList } from 'recharts';
 
 const AgeChart: React.FC = () => {
   const [ageData, setAgeData] = useState([]);
@@ -62,7 +54,7 @@ const AgeChart: React.FC = () => {
     <BarChart width={396} height={400} data={ageData}>
       <XAxis dataKey="name" stroke="#A0A0A0" interval={0} />
       <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-      <Legend width={50} />
+
       <Bar dataKey="uv" barSize={80}>
         <LabelList
           dataKey="uv"

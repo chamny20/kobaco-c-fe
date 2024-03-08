@@ -5,7 +5,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   Cell,
   LabelList,
 } from 'recharts';
@@ -37,17 +36,6 @@ const InstaChart = () => {
         <XAxis type="number" hide />
         <YAxis dataKey="name" type="category" />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-        <Legend
-          width={100}
-          wrapperStyle={{
-            top: 40,
-            right: 20,
-            backgroundColor: '#f5f5f5',
-            border: '1px solid #d5d5d5',
-            borderRadius: 3,
-            lineHeight: '40px',
-          }}
-        />
 
         <Bar dataKey="uv" barSize={45}>
           {data.map((entry, index) => (
