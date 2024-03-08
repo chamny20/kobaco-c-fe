@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart,
   Bar,
@@ -9,34 +9,53 @@ import {
   CartesianGrid,
   Cell,
 } from 'recharts';
-
-const data = [
-  { name: '월', uv: 13, pv: 2400, amt: 2400 },
-  { name: '화', uv: 7, pv: 2400, amt: 2400 },
-  { name: '수', uv: 3, pv: 2400, amt: 2400 },
-  { name: '목', uv: 10, pv: 2400, amt: 2400 },
-  { name: '금', uv: 2, pv: 2400, amt: 2400 },
-];
+import { getTrendTime } from '../../api/trend';
 
 const WeekChart = () => {
+  const [chartData, setChartData] = useState([]);
+
   const percent = (value: number) => `${value}%`;
 
-  const barColor = (entry: { uv: number }) => {
-    if (entry.uv >= 15) {
+  const barColor = (entry: { ratio: number }) => {
+    if (entry.ratio >= 15) {
       return '#B41729';
-    } else if (entry.uv >= 10) {
+    } else if (entry.ratio >= 10) {
       return '#d33b4d';
-    } else if (entry.uv >= 5) {
+    } else if (entry.ratio >= 5) {
       return '#dc6271';
     } else {
       return '#F2C4CA';
     }
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await getTrendTime({ trendKwd: '원피스' });
+      const apiData = response.data;
+
+      const transformedData = apiData.dayOfWeekStatisticResponseList
+        ? apiData.dayOfWeekStatisticResponseList.map(
+            (item: { dayOfWeek: string; ratio: number }) => ({
+              name: item.dayOfWeek,
+              ratio: item.ratio,
+            })
+          )
+        : [];
+
+      setChartData(transformedData);
+    } catch (error) {
+      console.error('Error fetching trend time data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
-      <BarChart width={600} height={300} data={data}>
-        <XAxis dataKey="name" stroke="#474750" />
+      <BarChart width={600} height={300} data={chartData}>
+        <XAxis dataKey="dayOfWeek" stroke="#474750" />
         <YAxis
           tickFormatter={percent}
           domain={[0, 15]}
@@ -55,8 +74,8 @@ const WeekChart = () => {
           }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Bar dataKey="uv" barSize={30}>
-          {data.map((entry, index) => (
+        <Bar dataKey="ratio" barSize={30}>
+          {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={barColor(entry)} />
           ))}
         </Bar>
