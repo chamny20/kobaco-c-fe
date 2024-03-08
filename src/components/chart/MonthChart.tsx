@@ -10,16 +10,16 @@ import {
   Cell,
 } from 'recharts';
 import { getTrendTime } from '../../api/trend';
+
 const MonthChart = () => {
   const [chartData, setChartData] = useState([]);
-  const trendKwd = '검색어';
 
-  const barColor = (entry: { uv: number }) => {
-    if (entry.uv >= 15) {
+  const barColor = (entry: { ratio: number }) => {
+    if (entry.ratio >= 15) {
       return '#B41729';
-    } else if (entry.uv >= 10) {
+    } else if (entry.ratio >= 10) {
       return '#d33b4d';
-    } else if (entry.uv >= 5) {
+    } else if (entry.ratio >= 5) {
       return '#dc6271';
     } else {
       return '#F2C4CA';
@@ -28,10 +28,17 @@ const MonthChart = () => {
 
   const fetchData = async () => {
     try {
-      const response = await getTrendTime({ trendKwd });
-      const data = response.data;
+      const response = await getTrendTime({ trendKwd: 'your-search-keyword' });
+      const apiData = response.data;
 
-      setChartData(data);
+      const transformedData = apiData.monthStatisticResponseList.map(
+        (item: { month: string; ratio: number }) => ({
+          month: item.month,
+          ratio: item.ratio,
+        })
+      );
+
+      setChartData(transformedData);
     } catch (error) {
       console.error('Error fetching trend time data:', error);
     }
@@ -39,16 +46,16 @@ const MonthChart = () => {
 
   useEffect(() => {
     fetchData();
-  }, [trendKwd]);
+  }, []);
 
   return (
     <>
       <BarChart width={600} height={300} data={chartData}>
-        <XAxis dataKey="name" stroke="#474750" />
+        <XAxis dataKey="month" stroke="#474750" />
         <YAxis
           tickFormatter={(value) => `${value}%`}
-          domain={[0, 20]} // y축의 표시 범위를 지정
-          ticks={[0, 5, 10, 15, 20]} // y축의 표시 값 설정
+          domain={[0, 20]}
+          ticks={[0, 5, 10, 15, 20]}
         />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
         <Legend
@@ -63,7 +70,7 @@ const MonthChart = () => {
           }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Bar dataKey="uv" barSize={30}>
+        <Bar dataKey="ratio" barSize={30}>
           {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={barColor(entry)} />
           ))}
