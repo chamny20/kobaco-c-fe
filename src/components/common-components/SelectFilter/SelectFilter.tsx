@@ -174,6 +174,7 @@ export const SelectFilter = (props: SelectFilterProps) => {
 export const SelectFilterContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
 `;
 
 export const SelectButton = styled.button<{ openFilter: boolean }>`
@@ -181,9 +182,7 @@ export const SelectButton = styled.button<{ openFilter: boolean }>`
   border: 1px solid ${(props) => props.theme.gray_05};
   background: var(--White, #fff);
   width: 100%;
-
   display: flex;
-  height: 54px;
   padding: 12px 16px;
   box-sizing: border-box;
   align-items: center;

@@ -6,6 +6,9 @@ import {
   SelectFilter,
   expressionCategory,
 } from '../../components/common-components/SelectFilter/SelectFilter';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 
 export const AdvSearchBanner = () => {
   const [keyword, setKeyword] = useState<string>('');
@@ -32,8 +35,31 @@ export const AdvSearchBanner = () => {
           style={{ width: '70%' }}
         />
         <div className="input-wrapper">
-          <div>calendar</div>
-
+          <div className="date-wrapper">
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DatePicker']} sx={{ padding: '0' }}>
+                <DatePicker
+                  sx={{
+                    backgroundColor: 'white',
+                    borderRadius: '4px',
+                    width: '40px',
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+            <p>~</p>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DatePicker']} sx={{ padding: '0' }}>
+                <DatePicker
+                  sx={{
+                    backgroundColor: 'white',
+                    borderRadius: '4px',
+                    width: '40px',
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </div>
           <div className="filter-container">
             <SelectFilter
               placeholder="표정 분석"
@@ -67,16 +93,30 @@ export const Container = styled.div`
 
   .input-wrapper {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
     margin-top: 40px;
+    margin-right: 160px;
     box-sizing: border-box;
-    /* border: 1px solid black; */
     gap: 22px;
+    max-width: 910px;
+    width: 100%;
+
+    .date-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      p {
+        color: white;
+        font-weight: 700;
+      }
+    }
 
     .filter-container {
       width: 540px;
       gap: 22px;
       display: flex;
+      align-items: center;
     }
   }
 
