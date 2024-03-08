@@ -4,6 +4,7 @@ import { pink } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import { Transition } from '@headlessui/react';
 import { SelectFilterProps } from './SelectFilter.types';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -146,6 +147,7 @@ export const SelectFilter = (props: SelectFilterProps) => {
         openFilter={openFilter}
       >
         {placeholder}
+        <FilterAltOutlinedIcon />
       </SelectButton>
 
       <Transition show={openFilter}>
@@ -184,7 +186,8 @@ export const SelectButton = styled.button<{ openFilter: boolean }>`
   height: 54px;
   padding: 12px 16px;
   box-sizing: border-box;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
 
   cursor: pointer;
