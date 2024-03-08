@@ -16,8 +16,8 @@ export const Header = () => {
           <img src={logo} alt="kobaco" onClick={() => spaceTo('/')} />
           <div className="wrapper-left">
             <div onClick={() => spaceTo('/trend')}>트렌드 분석</div>
-            <div>광고 아카이브</div>
-            <div>광고 만들기</div>
+            <div onClick={() => spaceTo('/adv-archive')}>광고 아카이브</div>
+            <div onClick={() => spaceTo('/')}>광고 만들기</div>
           </div>
         </div>
 
