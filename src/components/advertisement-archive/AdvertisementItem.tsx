@@ -31,8 +31,8 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
 
       <div className="last-line">
         <div>{createdAt}</div>
-        <p>ㆍ</p>
-        <div>{time}초</div>
+        {time !== null && <p>ㆍ</p>}
+        {time !== null && <div>{time}초</div>}
       </div>
     </AdvWrapper>
   );
@@ -44,6 +44,7 @@ export const AdvWrapper = styled.div`
   gap: 10px;
   /* max-width: 304px; */
   width: 100%;
+  cursor: pointer;
 
   .title-line {
     display: flex;
@@ -66,4 +67,5 @@ export const StyledImg = styled.img`
   height: 171px;
   width: 100%;
   object-fit: cover;
+  border-radius: 5px;
 `;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 // import Button from '../components/common-components/Button/Button';
-import { Card } from '../components/common-components/Card/Card';
 import { Modal } from '../components/common-components/Modal';
 import { useState } from 'react';
 import { Input } from '../components/common-components/Input/Input';
@@ -8,10 +7,41 @@ import {
   SelectFilter,
   expressionCategory,
 } from '../components/common-components/SelectFilter/SelectFilter';
-import {
-  AdvertisementList,
-  dummyData,
-} from '../components/advertisement/AdvertisementList';
+
+import { ResponsiveBullet } from '@nivo/bullet';
+
+export const data = [
+  {
+    id: 'temp.',
+    ranges: [7, 31, 69, 0, 100],
+    measures: [70],
+    markers: [63],
+  },
+  {
+    id: 'power',
+    ranges: [0.7470671871190924, 0.3677562834780932, 1.172144687842711, 0, 2],
+    measures: [0.36510267204728686, 1.1629403981231237],
+    markers: [1.9465741315432765],
+  },
+  {
+    id: 'volume',
+    ranges: [31, 11, 36, 0, 19, 19, 0, 80],
+    measures: [32],
+    markers: [48],
+  },
+  {
+    id: 'cost',
+    ranges: [1005, 39581, 347025, 0, 500000],
+    measures: [260159, 378863],
+    markers: [412655],
+  },
+  {
+    id: 'revenue',
+    ranges: [8, 0, 9, 0, 13],
+    measures: [4],
+    markers: [9.477138537319142, 10.311556470477594],
+  },
+];
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -30,19 +60,75 @@ export const TestChaemin = () => {
       <TestDiv>테스트인데볼드가될까요되네요</TestDiv>
       <div>이건 그냥 버전</div> */}
       <div style={{ margin: '10px 30px' }}>
-        <SelectFilter placeholder="표정 분석" filterData={expressionCategory} />
+        <SelectFilter
+          placeholder="표정 분석sss"
+          filterData={expressionCategory}
+        />
       </div>
 
+      {/* 
+{
+    "id": "temp.",
+    "ranges": [
+      7,
+      31,
+      69,
+      0,
+      100
+    ],
+    "measures": [
+      70
+    ],
+    "markers": [
+      63
+    ]
+  }, */}
+
+      {/* <AdvAnalysis /> */}
+      <div
+        style={{
+          width: '800px',
+          height: '140px',
+          border: '1px solid red',
+        }}
+      >
+        <ResponsiveBullet
+          data={[
+            {
+              id: '',
+              ranges: [0, 10, 30],
+              measures: [0],
+            },
+          ]}
+          margin={{ top: 50, right: 90, bottom: 50, left: 90 }}
+          spacing={46}
+          titleAlign="start"
+          titleOffsetX={-70}
+        />
+      </div>
+
+      {/* <div style={{ width: '800px', height: '500px', margin: '0 auto' }}>
+        <ResponsiveBullet
+          data={data}
+          margin={{ top: 50, right: 90, bottom: 50, left: 90 }}
+          spacing={46}
+          titleAlign="start"
+          titleOffsetX={-70}
+          measureSize={0.2}
+        />
+      </div> */}
       <div>
-        <Card title="검색량" subTitle="서브타이틀테스트트트트틑트트ㅡ">
+        {/* <Card title="검색량" subTitle="서브타이틀테스트트트트틑트트ㅡ">
           <div style={{ border: '1px solid red', textAlign: 'left' }}>
             hihi this area is content area hihi this area is content area hihi
             this area is content area hihi this area is content area hihi this
             area is content area hihi this area is content area
           </div>
-        </Card>
+        </Card> */}
 
-        <AdvertisementList data={dummyData} />
+        {/* <SimilarItem /> */}
+
+        {/* <AdvertisementList data={dummyData} /> */}
 
         <Input
           placeholder="검색어를 입력해주세요."

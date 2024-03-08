@@ -7,6 +7,7 @@ import { TrendPage } from '../pages/trend/TrendPage';
 import ScrollToTop from '../components/ScrollToTop';
 import { SearchPage } from '../pages/searchAnalysis/SearchPage';
 import { AdvArchivePage } from '../pages/adv-archive/AdvArchivePage';
+import { AdvDetailPage } from '../pages/adv-detail/AdvDetailPage';
 
 export const Router = () => {
   return (
@@ -18,6 +19,10 @@ export const Router = () => {
           <Route path="/trend" element={<TrendPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/adv-archive" element={<AdvArchivePage />} />
+          <Route
+            path="/adv-archive/:advertisementId"
+            element={<AdvDetailPage />}
+          />
 
           {/* test */}
           <Route path="/test" element={<TestChaemin />} />
