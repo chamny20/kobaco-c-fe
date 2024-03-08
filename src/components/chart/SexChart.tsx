@@ -1,63 +1,67 @@
-import React, { useState } from 'react';
-import { PieChart, PieChartProps } from 'react-minimal-pie-chart';
+import React, { useEffect, useState } from 'react';
+import { getTrendPerson } from '../../api/trend';
+import { PieChart } from 'react-minimal-pie-chart';
 
-interface PieChart extends PieChartProps {
-  data: { title: string; value: number; color: string }[];
+interface GenderData {
+  title: string;
+  value: number;
+  color: string;
 }
 
-const FullOption: React.FC<PieChart> = ({ data, ...props }) => {
-  const [internalHovered, setInternalHovered] = useState<number | undefined>(
-    undefined
-  );
-
-  const datas = data.map((entry, i) => {
-    if (internalHovered === i) {
-      return {
-        ...entry,
-        color: 'grey',
-      };
-    }
-    return entry;
-  });
-
-  const lineWidth = 50;
-
-  return (
-    <PieChart
-      {...props}
-      data={datas}
-      radius={20}
-      lineWidth={lineWidth}
-      segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
-      segmentsShift={(index) => (index === internalHovered ? 6 : 1)}
-      animate
-      label={({ dataEntry }) => `${Math.round(dataEntry.percentage ?? 0)}%`}
-      labelPosition={100 - lineWidth / 2}
-      labelStyle={{
-        fill: '#fff',
-        opacity: 0.75,
-        pointerEvents: 'none',
-        fontSize: 3,
-      }}
-      onMouseOver={(_, index) => {
-        setInternalHovered(index);
-      }}
-      onMouseOut={() => {
-        setInternalHovered(undefined);
-      }}
-    />
-  );
-};
-
-const chartData = [
-  { title: 'One', value: 67, color: '#D33B4D' },
-  { title: 'Two', value: 33, color: '#81A5DA' },
-];
-
 const SexChart: React.FC = () => {
+  const [chartData, setChartData] = useState<GenderData[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await getTrendPerson({ trendKwd: '원피스' });
+      const apiData = response.data;
+
+      const transformedData = apiData.genderStatisticResponseList
+        ? apiData.genderStatisticResponseList.map(
+            (item: { genderType: string; ratio: number }) => ({
+              title: item.genderType,
+              value: item.ratio,
+              color: getDefaultColor(item.genderType),
+            })
+          )
+        : [];
+
+      setChartData(transformedData);
+    } catch (error) {
+      console.error('Error fetching trend person data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const getDefaultColor = (genderType: string) => {
+    switch (genderType) {
+      case 'FEMALE':
+        return '#D33B4D';
+      case 'MALE':
+        return '#81A5DA';
+      default:
+        return '#999999';
+    }
+  };
+
   return (
     <div>
-      <FullOption data={chartData} />
+      <PieChart
+        data={chartData}
+        radius={30}
+        lineWidth={40}
+        label={({ dataEntry }) => `${Math.round(dataEntry.value ?? 0)}%`}
+        labelPosition={80}
+        labelStyle={{
+          fontSize: '5px',
+          fill: '#ffffff',
+        }}
+      />
+      width={270}
+      height={270}
     </div>
   );
 };
