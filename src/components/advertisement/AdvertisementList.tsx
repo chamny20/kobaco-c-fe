@@ -81,7 +81,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
 
   return (
     <AdvertisementListContainer>
-      <div>
+      <div className="sort-box">
         <CustomButton
           id="basic-button"
           aria-controls={open ? 'basic-menu' : undefined}
@@ -168,6 +168,13 @@ export const AdvertisementListContainer = styled.div`
   margin: 0 auto;
   padding: 120px 0px;
   box-sizing: border-box;
+
+  .sort-box {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export const ListWrapper = styled.div`
