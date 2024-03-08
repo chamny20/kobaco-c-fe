@@ -12,6 +12,7 @@ import {
   AdvertisementList,
   dummyData,
 } from '../components/advertisement/AdvertisementList';
+import { SimilarItem } from '../components/advertisement/SimilarItem';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -42,7 +43,9 @@ export const TestChaemin = () => {
           </div>
         </Card>
 
-        <AdvertisementList data={dummyData} />
+        <SimilarItem />
+
+        {/* <AdvertisementList data={dummyData} /> */}
 
         <Input
           placeholder="검색어를 입력해주세요."
