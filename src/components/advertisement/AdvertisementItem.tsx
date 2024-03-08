@@ -16,7 +16,7 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
 
   return (
     <AdvWrapper>
-      <div>{videoUrl}</div>
+      <StyledImg src={videoUrl} alt="video-thumnail" />
       <div className="title-line">
         <div>{title}</div>
         {isArchived ? (
@@ -41,16 +41,14 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
 export const AdvWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  border: 1px solid blue;
-  max-width: 304px;
+  gap: 10px;
+  /* max-width: 304px; */
   width: 100%;
 
   .title-line {
-    border: 1px solid red;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .last-line {
@@ -62,4 +60,10 @@ export const AdvWrapper = styled.div`
     line-height: normal;
     letter-spacing: -0.28px;
   }
+`;
+
+export const StyledImg = styled.img`
+  height: 171px;
+  width: 100%;
+  object-fit: cover;
 `;

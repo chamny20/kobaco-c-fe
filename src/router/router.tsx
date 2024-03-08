@@ -6,6 +6,7 @@ import TestJungmin from '../test/jungmin';
 import { TrendPage } from '../pages/trend/TrendPage';
 import ScrollToTop from '../components/ScrollToTop';
 import { SearchPage } from '../pages/searchAnalysis/SearchPage';
+import { AdvArchivePage } from '../pages/adv-archive/AdvArchivePage';
 
 export const Router = () => {
   return (
@@ -16,6 +17,7 @@ export const Router = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/trend" element={<TrendPage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/adv-archive" element={<AdvArchivePage />} />
 
           {/* test */}
           <Route path="/test" element={<TestChaemin />} />
