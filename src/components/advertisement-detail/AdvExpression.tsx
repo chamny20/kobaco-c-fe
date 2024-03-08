@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import basic_ex from '../../assets/advertisement/ex_basic.png';
 import smile_ex from '../../assets/advertisement/ex_smile.png';
 import surp_ex from '../../assets/advertisement/ex_surprise.png';
+import { ExpressionBar } from './ExpressionBar';
 
 export type ExpressionProps = {
   expressionList: expressionListType[];
@@ -100,7 +101,9 @@ export const AdvExpression = ({ data }: { data: ExpressionProps }) => {
           </div>
         </div>
       </EmojiWrapper>
-      <div>차트</div>
+      <div>
+        <ExpressionBar />
+      </div>
     </AdvExpressionContainer>
   );
 };
@@ -156,7 +159,6 @@ export const EmojiWrapper = styled.div`
   box-sizing: border-box;
 
   .img-box {
-    border: 1px solid red;
     display: flex;
     align-items: center;
     gap: 95px;
