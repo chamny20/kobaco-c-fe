@@ -11,7 +11,7 @@ export const SecondView = () => {
           <div className="view-text">
             <div>
               <span>Al analysis System for AD Creation</span>
-              <p>코바코,아이작이란?</p>
+              <p>코바코, 아이작이란?</p>
             </div>
 
             <div>

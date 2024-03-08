@@ -4,6 +4,14 @@ import { Card } from '../components/common-components/Card/Card';
 import { Modal } from '../components/common-components/Modal';
 import { useState } from 'react';
 import { Input } from '../components/common-components/Input/Input';
+import {
+  SelectFilter,
+  expressionCategory,
+} from '../components/common-components/SelectFilter/SelectFilter';
+import {
+  AdvertisementList,
+  dummyData,
+} from '../components/advertisement/AdvertisementList';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -21,6 +29,9 @@ export const TestChaemin = () => {
       </Button>
       <TestDiv>테스트인데볼드가될까요되네요</TestDiv>
       <div>이건 그냥 버전</div> */}
+      <div style={{ margin: '10px 30px' }}>
+        <SelectFilter placeholder="표정 분석" filterData={expressionCategory} />
+      </div>
 
       <div>
         <Card title="검색량" subTitle="서브타이틀테스트트트트틑트트ㅡ">
@@ -30,6 +41,8 @@ export const TestChaemin = () => {
             area is content area hihi this area is content area
           </div>
         </Card>
+
+        <AdvertisementList data={dummyData} />
 
         <Input
           placeholder="검색어를 입력해주세요."

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { InputProps, InputSize } from './Input.types';
 import { PropsWithChildren, forwardRef } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
 const sizeStyles: Record<InputSize, ReturnType<typeof css>> = {
   sm: css`
@@ -31,6 +32,10 @@ export const Input = forwardRef<
         alignItems: 'center',
       }}
     >
+      <SearchIcon
+        style={{ position: 'absolute', left: '20px', fill: '#7B7B7B' }}
+      />
+
       <StyledInput
         ref={ref}
         placeholder={placeholder}
@@ -49,10 +54,14 @@ export const StyledInput = styled.input<{ size?: InputSize }>`
   box-sizing: border-box;
   width: 100%;
   ${({ size }) => size && sizeStyles[size || 'lg']}
+  padding:0px 54px;
 
   &:focus {
     outline: none;
     border-color: ${(props) => props.theme.red_01};
+  }
+  &::placeholder {
+    font-size: 16px;
   }
 `;
 

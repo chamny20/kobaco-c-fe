@@ -14,29 +14,35 @@ export const FourthView = () => {
     {
       label: '트렌드 분석',
       content: (
-        <TabItem>
-          <img src={trend1} alt="" />
-          <img src={trend2} alt="" />
-        </TabItem>
+        <ScrollContainer>
+          <TabItem>
+            <img src={trend1} alt="" />
+            <img src={trend2} alt="" />
+          </TabItem>
+        </ScrollContainer>
       ),
     },
     {
       label: '광고 아카이브',
       content: (
-        <TabItem>
-          <img src={arc1} alt="" />
-          <img src={arc2} alt="" />
-          <img src={arc3} alt="" />
-        </TabItem>
+        <ScrollContainer>
+          <TabItem>
+            <img src={arc1} alt="" />
+            <img src={arc2} alt="" />
+            <img src={arc3} alt="" />
+          </TabItem>
+        </ScrollContainer>
       ),
     },
     {
       label: '광고 만들기',
       content: (
-        <TabItem>
-          <img src={adv1} alt="" />
-          <img src={adv2} alt="" />
-        </TabItem>
+        <ScrollContainer>
+          <TabItem>
+            <img src={adv1} alt="" />
+            <img src={adv2} alt="" />
+          </TabItem>
+        </ScrollContainer>
       ),
     },
   ];

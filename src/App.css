@@ -73,3 +73,16 @@ body,
   font-weight: 900;
   font-display: swap;
 }
+
+.MuiOutlinedInput-notchedOutline {
+  border-width: 1px !important;
+  border-color: #e6e6e6 !important;
+}
+
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #d33b4d !important;
+}
+
+.Mui-focused {
+  color: #d33b4d !important;
+}
