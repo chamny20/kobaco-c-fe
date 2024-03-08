@@ -1,0 +1,85 @@
+import React, { useEffect, useState } from 'react';
+import {
+  AreaChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+  Area,
+} from 'recharts';
+import { getTrendTime } from '../../api/trend';
+
+const KeywordChart = () => {
+  const [chartData, setChartData] = useState([]);
+
+  const gradientColors = [
+    { offset: '5%', color: '#D33B4D', opacity: 0.8 },
+    { offset: '95%', color: '#D33B4D', opacity: 0 },
+  ];
+
+  const fetchData = async () => {
+    try {
+      const response = await getTrendTime({ trendKwd: '원피스' });
+      const apiData = response.data;
+
+      const transformedData = apiData.monthStatisticResponseList.map(
+        (item: { month: string; ratio: number }) => ({
+          name: item.month,
+          uv: item.ratio,
+        })
+      );
+
+      setChartData(transformedData);
+    } catch (error) {
+      console.error('Error fetching trend time data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      <AreaChart
+        width={730}
+        height={250}
+        data={chartData}
+        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+      >
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            {gradientColors.map((color, index) => (
+              <stop
+                key={index}
+                offset={color.offset}
+                stopColor={color.color}
+                stopOpacity={color.opacity}
+              />
+            ))}
+          </linearGradient>
+        </defs>
+        <XAxis dataKey="name" stroke="#474750" />
+        <YAxis
+          tickFormatter={(value) => `${value}%`}
+          domain={[0, 20]}
+          ticks={[0, 5, 10, 15, 20]}
+        />
+        <CartesianGrid strokeDasharray="3 3" />
+        <Tooltip />
+        <Legend />
+        <Area
+          type="linear"
+          dataKey="uv"
+          stroke="#D33B4D"
+          fillOpacity={1}
+          fill="url(#colorUv)"
+          dot={{ stroke: '#D33B4D', strokeWidth: 2, r: 2 }}
+        />
+      </AreaChart>
+    </>
+  );
+};
+
+export default KeywordChart;
