@@ -1,34 +1,11 @@
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
 import { pink } from '@mui/material/colors';
 import Checkbox from '@mui/material/Checkbox';
 import { Transition } from '@headlessui/react';
 import { SelectFilterProps } from './SelectFilter.types';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
-export const CustomCheckBox = ({
-  checked,
-  onChange,
-}: {
-  checked: boolean;
-  onChange: (checked: boolean) => void;
-}) => {
-  return (
-    <Checkbox
-      {...label}
-      size="small"
-      sx={{
-        color: pink[800],
-        '&.Mui-checked': {
-          color: '#D33B4D',
-        },
-      }}
-      checked={checked}
-      onChange={(event) => onChange(event.target.checked)}
-    />
-  );
-};
 
 export const expressionCategory = [
   {
@@ -108,11 +85,35 @@ export const expressionCategory = [
   },
 ];
 
+export const CustomCheckBox = ({
+  checked,
+  onChange,
+}: {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}) => {
+  return (
+    <Checkbox
+      {...label}
+      size="small"
+      sx={{
+        color: pink[800],
+        '&.Mui-checked': {
+          color: '#D33B4D',
+        },
+      }}
+      checked={checked}
+      onChange={(event) => onChange(event.target.checked)}
+    />
+  );
+};
+
 export const SelectFilter = (props: SelectFilterProps) => {
   const { filterData, placeholder } = props;
 
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const [expressionData, setExpressionData] = useState(filterData);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleCheckBoxChange = (id: number) => {
     const updatedData = expressionData.map((item) =>
@@ -121,17 +122,34 @@ export const SelectFilter = (props: SelectFilterProps) => {
     setExpressionData(updatedData);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpenFilter(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <SelectFilterContainer>
       <SelectButton
         onMouseDown={() => setOpenFilter((prev) => !prev)}
-        openFilter
+        openFilter={openFilter}
       >
         {placeholder}
       </SelectButton>
 
       <Transition show={openFilter}>
-        <DropDownWrapper openFilter>
+        <DropDownWrapper ref={dropdownRef}>
           <Transition.Child>
             {expressionData.map((item) => {
               return (
@@ -153,13 +171,13 @@ export const SelectFilter = (props: SelectFilterProps) => {
 
 export const SelectFilterContainer = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const SelectButton = styled.button<{ openFilter: boolean }>`
   border-radius: ${({ openFilter }) => (openFilter ? '6px 6px 0 0' : '6px')};
   border: 1px solid ${(props) => props.theme.gray_05};
   background: var(--White, #fff);
-  max-width: 260px;
   width: 100%;
 
   display: flex;
@@ -178,16 +196,15 @@ export const SelectButton = styled.button<{ openFilter: boolean }>`
   letter-spacing: -0.32px;
 `;
 
-export const DropDownWrapper = styled.div<{ openFilter: boolean }>`
+export const DropDownWrapper = styled.div`
   max-width: 260px;
   width: 100%;
   padding: 14px;
   box-sizing: border-box;
   position: absolute;
   //
-  border-radius: ${({ openFilter }) => (openFilter ? '0 0 5px 5px' : '0')};
+  border-radius: 0 0 5px 5px;
   border: 1px solid ${(props) => props.theme.gray_05};
-  border-top: ${({ openFilter }) => (openFilter ? '0' : '1px')};
   background: #fff;
 
   .check-item {

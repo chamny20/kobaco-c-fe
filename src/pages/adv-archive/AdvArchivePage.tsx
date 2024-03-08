@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AdvertisementList } from '../../components/advertisement/AdvertisementList';
 import { getAdvertisementList } from '../../api/advertisement';
 import { AdvertiseItemProps } from '../../components/advertisement/AdvertisementItem';
+import { AdvSearchBanner } from './AdvSearchBanner';
 
 export const AdvArchivePage = () => {
   const [sortType, setSortType] = useState<string>('LATEST');
@@ -28,7 +29,7 @@ export const AdvArchivePage = () => {
   return (
     <>
       {/* TODO : prop으로 sortType, kwdVal, startDate, endDate */}
-      <div>상단 배너 검색 부분</div>
+      <AdvSearchBanner />
       <AdvertisementList data={advData ?? []} />
     </>
   );
