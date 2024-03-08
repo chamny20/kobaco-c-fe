@@ -6,39 +6,55 @@ export type SimilarItemProps = {
   createdAt: string;
   moodInfo: string[];
   isArchived?: boolean;
-};
+}[];
 
-export const SimilarItem = ({ data }: { data: SimilarItemProps }) => {
+export const SimilarItem = ({
+  data,
+  mood,
+}: {
+  data: SimilarItemProps;
+  mood: string[];
+}) => {
   return (
-    <SimilarItemContainer>
-      <img src={data.videoUrl} alt="" />
-      <div className="text-box">
-        <p>{data.title}</p>
-        <span>{data.createdAt}2</span>
-        <div className="tag-box">
-          {data.moodInfo.map((item, idx) => {
-            return <div key={idx}>#{item}</div>;
-          })}
-        </div>
-      </div>
-    </SimilarItemContainer>
+    <>
+      <SimTitle>비슷한 분위기의 영상</SimTitle>
+      <SimTag>{mood?.map((item, idx) => <div key={idx}>#{item}</div>)}</SimTag>
+
+      {data?.map((item, idx) => {
+        return (
+          <SimilarItemContainer key={idx}>
+            <img src={item.videoUrl} alt="" />
+            <div className="text-box">
+              <p>{item.title}</p>
+              <span>{item.createdAt}</span>
+              <div className="tag-box">
+                {item.moodInfo.map((item, idx) => {
+                  return <div key={idx}>#{item}</div>;
+                })}
+              </div>
+            </div>
+          </SimilarItemContainer>
+        );
+      })}
+    </>
   );
 };
 
 export const SimilarItemContainer = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 20px;
   width: 390px;
   height: 114px;
   /* height: 100%; */
+  padding: 10px 0px;
+  /* box-sizing: border-box; */
 
   img {
     max-width: 202px;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 1px solid red;
+    border-radius: 6px;
   }
 
   .text-box {
@@ -46,7 +62,6 @@ export const SimilarItemContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border: 1px solid blue;
     width: 100%;
 
     .tag-box {
@@ -90,4 +105,28 @@ export const SimilarItemContainer = styled.div`
       letter-spacing: -0.28px;
     }
   }
+`;
+
+export const SimTitle = styled.div`
+  overflow: hidden;
+  color: ${(props) => props.theme.gray_01};
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 180%;
+  letter-spacing: -0.32px;
+`;
+
+export const SimTag = styled.div`
+  color: ${(props) => props.theme.red_01};
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 180%;
+  letter-spacing: -0.32px;
+  display: flex;
+  flex-direction: row;
+  gap: 13px;
+  align-items: center;
 `;

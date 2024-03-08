@@ -1,32 +1,44 @@
 import styled from 'styled-components';
 
-export const AdvAnalysis = () => {
+export type AdvAnalysisProps = {
+  moodInfo: string[];
+  objectInfo: string[];
+  personInfo: string[];
+};
+
+export const AdvAnalysis = ({ data }: { data: AdvAnalysisProps }) => {
   return (
     <AdvAnalysisContainer>
       <div className="video-analysis">
         <RowBox>
           <div className="an-title">영상분위기</div>
-          <div className="an-content">#활기찬 #역동적인</div>
+
+          <div className="an-content">
+            {data?.moodInfo.map((item, idx) => <div key={idx}>#{item}</div>)}
+          </div>
         </RowBox>
         <div>
           <div className="an-title">영상 분석</div>
           <SecondBox>
             <div className="second-content">
               <div className="an-subtitle">인물</div>
-              <div className="an-content">#주현영</div>
+              <div className="an-content">
+                {data?.personInfo.map((item, idx) => (
+                  <div key={idx}>#{item}</div>
+                ))}
+              </div>
             </div>
             <div className="second-content">
               <div className="an-subtitle">사물</div>
-              <div className="an-content">#떡볶이 #그릇</div>
+              <div className="an-content">
+                {data?.objectInfo.map((item, idx) => (
+                  <div key={idx}>#{item}</div>
+                ))}
+              </div>
             </div>
           </SecondBox>
         </div>
-        <RowBox>
-          <div className="an-title">표정 분석</div>
-          <div className="an-content">#활기찬 #역동적인</div>
-        </RowBox>
       </div>
-      <div>그래픽 비율 및 차트</div>
     </AdvAnalysisContainer>
   );
 };
