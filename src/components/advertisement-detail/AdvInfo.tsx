@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import { useState } from 'react';
 
 export type AdvInfoProps = {
   advertiser: string;
@@ -13,6 +14,12 @@ export type AdvInfoProps = {
 };
 
 export const AdvInfo = ({ data }: { data: AdvInfoProps }) => {
+  const [isBookmarked, setIsBookmarked] = useState(data?.isArchived);
+
+  const handleBookmarkClick = () => {
+    setIsBookmarked((prev) => !prev);
+  };
+
   return (
     <AdvInfoContainer>
       <VideoImg src={data?.videoUrl} alt="" />
@@ -20,12 +27,15 @@ export const AdvInfo = ({ data }: { data: AdvInfoProps }) => {
         <div className="title-line">
           <div className="title">{data?.title}</div>
           <div>
-            {data?.isArchived ? (
-              <BookmarkIcon />
+            {isBookmarked ? (
+              <BookmarkIcon
+                onClick={handleBookmarkClick}
+                style={{ cursor: 'pointer' }}
+              />
             ) : (
               <BookmarkBorderIcon
-              // onClick={handleScrappedClick}
-              // className="fill-gray-60 mr-[20px]"
+                onClick={handleBookmarkClick}
+                style={{ cursor: 'pointer' }}
               />
             )}
           </div>
