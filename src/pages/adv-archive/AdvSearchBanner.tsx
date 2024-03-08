@@ -32,7 +32,7 @@ export const AdvSearchBanner = () => {
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           size="lg"
-          style={{ width: '70%' }}
+          style={{ width: '76%' }}
         />
         <div className="input-wrapper">
           <div className="date-wrapper">
@@ -42,7 +42,7 @@ export const AdvSearchBanner = () => {
                   sx={{
                     backgroundColor: 'white',
                     borderRadius: '4px',
-                    width: '40px',
+                    width: '30px',
                   }}
                 />
               </DemoContainer>
@@ -54,7 +54,7 @@ export const AdvSearchBanner = () => {
                   sx={{
                     backgroundColor: 'white',
                     borderRadius: '4px',
-                    width: '40px',
+                    width: '30px',
                   }}
                 />
               </DemoContainer>
@@ -98,7 +98,7 @@ export const Container = styled.div`
     margin-right: 160px;
     box-sizing: border-box;
     gap: 22px;
-    max-width: 910px;
+    /* max-width: 910px; */
     width: 100%;
 
     .date-wrapper {
