@@ -48,11 +48,11 @@ const SexChart: React.FC = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: '400px', height: '300px' }}>
       <PieChart
         data={chartData}
         radius={30}
-        lineWidth={40}
+        lineWidth={48}
         label={({ dataEntry }) => `${Math.round(dataEntry.value ?? 0)}%`}
         labelPosition={80}
         labelStyle={{
@@ -60,8 +60,6 @@ const SexChart: React.FC = () => {
           fill: '#ffffff',
         }}
       />
-      width={270}
-      height={270}
     </div>
   );
 };
