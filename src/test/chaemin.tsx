@@ -4,11 +4,15 @@ import { Card } from '../components/common-components/Card/Card';
 import { Modal } from '../components/common-components/Modal';
 import { useState } from 'react';
 import { Input } from '../components/common-components/Input/Input';
-import { AdvertisementItem } from '../components/advertisement/AdvertisementItem';
 import {
   SelectFilter,
   expressionCategory,
 } from '../components/common-components/SelectFilter/SelectFilter';
+import {
+  AdvertisementList,
+  dummyData,
+} from '../components/advertisement/AdvertisementList';
+import { AdvertiseItemProps } from '../components/advertisement/AdvertisementItem';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -39,14 +43,7 @@ export const TestChaemin = () => {
           </div>
         </Card>
 
-        <AdvertisementItem
-          title="difjaliejf"
-          time={10}
-          videoUrl="aliejfai"
-          createdAt="2020-02-02"
-          advertisementId={1}
-          isArchived
-        />
+        <AdvertisementList data={dummyData} />
 
         <Input
           placeholder="검색어를 입력해주세요."
