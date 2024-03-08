@@ -118,4 +118,5 @@ export const VideoImg = styled.img`
   width: 100%;
   max-width: 920px;
   height: 517px;
+  border-radius: 6px;
 `;
