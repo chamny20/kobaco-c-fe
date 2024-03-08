@@ -31,8 +31,8 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
 
       <div className="last-line">
         <div>{createdAt}</div>
-        <p>ㆍ</p>
-        <div>{time}초</div>
+        {time !== null && <p>ㆍ</p>}
+        {time !== null && <div>{time}초</div>}
       </div>
     </AdvWrapper>
   );
