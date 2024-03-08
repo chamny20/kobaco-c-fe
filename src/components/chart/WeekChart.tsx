@@ -5,9 +5,8 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
-  CartesianGrid,
   Cell,
+  CartesianGrid,
 } from 'recharts';
 import { getTrendTime } from '../../api/trend';
 
@@ -36,7 +35,7 @@ const WeekChart = () => {
       const transformedData = apiData.dayOfWeekStatisticResponseList
         ? apiData.dayOfWeekStatisticResponseList.map(
             (item: { dayOfWeek: string; ratio: number }) => ({
-              name: item.dayOfWeek,
+              dayOfWeek: item.dayOfWeek,
               ratio: item.ratio,
             })
           )
@@ -54,26 +53,15 @@ const WeekChart = () => {
 
   return (
     <>
-      <BarChart width={600} height={300} data={chartData}>
-        <XAxis dataKey="dayOfWeek" stroke="#474750" />
+      <BarChart width={384} height={348} data={chartData}>
+        <XAxis dataKey="dayOfWeek" stroke="#A0A0A0" />
         <YAxis
           tickFormatter={percent}
-          domain={[0, 15]}
-          ticks={[0, 5, 10, 15]}
+          domain={[0, 30]}
+          ticks={[0, 10, 20, 30]}
         />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-        <Legend
-          width={100}
-          wrapperStyle={{
-            top: 40,
-            right: 20,
-            backgroundColor: '#f5f5f5',
-            border: '1px solid #d5d5d5',
-            borderRadius: 3,
-            lineHeight: '40px',
-          }}
-        />
-        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <CartesianGrid strokeDasharray="7 7" vertical={false} />{' '}
         <Bar dataKey="ratio" barSize={30}>
           {chartData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={barColor(entry)} />
