@@ -4,7 +4,6 @@ import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { useNavigate } from 'react-router-dom';
 
 export const dummyData = [
   {
@@ -80,11 +79,6 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   const endIndex = startIndex + itemsPerPage;
   const displayedData = data.slice(startIndex, endIndex);
 
-  const navigate = useNavigate();
-
-  const spaceTo = (page: string) => {
-    navigate(page);
-  };
   return (
     <AdvertisementListContainer>
       <div className="sort-box">
@@ -130,10 +124,9 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
       <ListWrapper>
         {displayedData.map((item) => {
           return (
-            <div
-              onClick={() => spaceTo(`/adv-archive/${item.advertisementId}`)}
-            >
+            <div>
               <AdvertisementItem
+                advertisementId={item.advertisementId}
                 key={item.advertisementId}
                 title={item.title}
                 videoUrl={item.videoUrl}
