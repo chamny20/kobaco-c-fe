@@ -48,7 +48,7 @@ export const AdvWrapper = styled.div`
   .title-line {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .last-line {
