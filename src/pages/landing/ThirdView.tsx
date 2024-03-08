@@ -37,8 +37,8 @@ export const ThirdView = () => {
           <div className="step-box">
             {stepItems.map((item, idx) => {
               return (
-                <>
-                  <div className="step-item" key={idx}>
+                <div key={idx}>
+                  <div className="step-item">
                     <img src={item.img} alt="" />
                     <div>
                       <p>{item.title}</p>
@@ -50,7 +50,7 @@ export const ThirdView = () => {
                       <NavigateNextIcon style={{ fontSize: '48px' }} />
                     )}
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
