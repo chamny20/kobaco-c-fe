@@ -97,7 +97,6 @@ export const AdvDetailPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   max-width: 1300px;
-  border: 1px solid red;
   padding: 40px 0px;
   box-sizing: border-box;
   gap: 32px;

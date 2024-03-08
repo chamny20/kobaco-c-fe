@@ -10,39 +10,6 @@ import {
 
 import { ResponsiveBullet } from '@nivo/bullet';
 
-export const data = [
-  {
-    id: 'temp.',
-    ranges: [7, 31, 69, 0, 100],
-    measures: [70],
-    markers: [63],
-  },
-  {
-    id: 'power',
-    ranges: [0.7470671871190924, 0.3677562834780932, 1.172144687842711, 0, 2],
-    measures: [0.36510267204728686, 1.1629403981231237],
-    markers: [1.9465741315432765],
-  },
-  {
-    id: 'volume',
-    ranges: [31, 11, 36, 0, 19, 19, 0, 80],
-    measures: [32],
-    markers: [48],
-  },
-  {
-    id: 'cost',
-    ranges: [1005, 39581, 347025, 0, 500000],
-    measures: [260159, 378863],
-    markers: [412655],
-  },
-  {
-    id: 'revenue',
-    ranges: [8, 0, 9, 0, 13],
-    measures: [4],
-    markers: [9.477138537319142, 10.311556470477594],
-  },
-];
-
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
@@ -66,25 +33,6 @@ export const TestChaemin = () => {
         />
       </div>
 
-      {/* 
-{
-    "id": "temp.",
-    "ranges": [
-      7,
-      31,
-      69,
-      0,
-      100
-    ],
-    "measures": [
-      70
-    ],
-    "markers": [
-      63
-    ]
-  }, */}
-
-      {/* <AdvAnalysis /> */}
       <div
         style={{
           width: '800px',
@@ -96,7 +44,7 @@ export const TestChaemin = () => {
           data={[
             {
               id: '',
-              ranges: [0, 10, 30],
+              ranges: [0, 5, 10, 15, 20, 25, 30],
               measures: [0],
             },
           ]}
@@ -104,6 +52,14 @@ export const TestChaemin = () => {
           spacing={46}
           titleAlign="start"
           titleOffsetX={-70}
+          rangeColors={[
+            '#85A8DF',
+            '#85A8DF',
+            '#F6E69D',
+            '#F6E69D',
+            '#F6E69D',
+            '#F6E69D',
+          ]}
         />
       </div>
 
