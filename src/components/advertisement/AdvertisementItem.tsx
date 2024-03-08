@@ -42,7 +42,7 @@ export const AdvWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 304px;
+  /* max-width: 304px; */
   width: 100%;
 
   .title-line {
@@ -63,7 +63,7 @@ export const AdvWrapper = styled.div`
 `;
 
 export const StyledImg = styled.img`
-  width: 304px;
   height: 171px;
+  width: 100%;
   object-fit: cover;
 `;
