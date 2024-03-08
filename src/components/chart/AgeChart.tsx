@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getTrendPerson } from '../../api/trend';
 import {
   BarChart,
   Bar,
@@ -9,15 +10,33 @@ import {
   LabelList,
 } from 'recharts';
 
-const data = [
-  { name: '10대', uv: 5, pv: 2400, amt: 2400 },
-  { name: '20대', uv: 8, pv: 2400, amt: 2400 },
-  { name: '30대', uv: 10, pv: 2400, amt: 2400 },
-  { name: '40대', uv: 15, pv: 2400, amt: 2400 },
-  { name: '50대', uv: 14, pv: 2400, amt: 2400 },
-];
+const AgeChart: React.FC = () => {
+  const [ageData, setAgeData] = useState([]);
 
-const AgeChart = () => {
+  const fetchData = async () => {
+    try {
+      const response = await getTrendPerson({ trendKwd: '원피스' });
+      const apiData = response.data;
+
+      const transformedData = apiData.ageStatisticResponseList
+        ? apiData.ageStatisticResponseList.map(
+            (item: { ageType: string; ratio: number }) => ({
+              name: item.ageType,
+              uv: item.ratio,
+            })
+          )
+        : [];
+
+      setAgeData(transformedData);
+    } catch (error) {
+      console.error('Error fetching trend person data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const gradientColors = [
     { offset: '5%', color: '#B41729', opacity: 0.8 },
     { offset: '95%', color: '#B41729', opacity: 0 },
@@ -40,18 +59,18 @@ const AgeChart = () => {
   };
 
   return (
-    <BarChart width={600} height={300} data={data}>
-      <XAxis dataKey="name" stroke="#474750" interval={0} />
+    <BarChart width={396} height={400} data={ageData}>
+      <XAxis dataKey="name" stroke="#A0A0A0" interval={0} />
       <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
       <Legend width={50} />
       <Bar dataKey="uv" barSize={80}>
         <LabelList
           dataKey="uv"
           position="top"
-          style={{ fill: '#000000', fontSize: 12 }}
+          style={{ fill: '#A0A0A0', fontSize: 12 }}
           formatter={(value: number) => `${value}%`}
         />
-        {data.map((entry, index) => (
+        {ageData.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={getBarFill(entry)} />
         ))}
       </Bar>
