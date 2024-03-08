@@ -28,7 +28,7 @@ const MonthChart = () => {
 
   const fetchData = async () => {
     try {
-      const response = await getTrendTime({ trendKwd: 'your-search-keyword' });
+      const response = await getTrendTime({ trendKwd: '원피스' });
       const apiData = response.data;
 
       const transformedData = apiData.monthStatisticResponseList.map(
