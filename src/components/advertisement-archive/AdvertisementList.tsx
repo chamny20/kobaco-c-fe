@@ -4,6 +4,7 @@ import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { useNavigate } from 'react-router-dom';
 
 export const dummyData = [
   {
@@ -79,6 +80,11 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   const endIndex = startIndex + itemsPerPage;
   const displayedData = data.slice(startIndex, endIndex);
 
+  const navigate = useNavigate();
+
+  const spaceTo = (page: string) => {
+    navigate(page);
+  };
   return (
     <AdvertisementListContainer>
       <div className="sort-box">
@@ -124,14 +130,18 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
       <ListWrapper>
         {displayedData.map((item) => {
           return (
-            <AdvertisementItem
-              key={item.advertisementId}
-              title={item.title}
-              videoUrl={item.videoUrl}
-              createdAt={item.createdAt}
-              isArchived={item.isArchived}
-              time={item.time}
-            />
+            <div
+              onClick={() => spaceTo(`/adv-archive/${item.advertisementId}`)}
+            >
+              <AdvertisementItem
+                key={item.advertisementId}
+                title={item.title}
+                videoUrl={item.videoUrl}
+                createdAt={item.createdAt}
+                isArchived={item.isArchived}
+                time={item.time}
+              />
+            </div>
           );
         })}
       </ListWrapper>
@@ -164,9 +174,9 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
 export const AdvertisementListContainer = styled.div`
   max-width: 1300px;
   width: 100%;
-  border: 1px solid green;
   margin: 0 auto;
-  padding: 120px 0px;
+  padding-top: 20px;
+  padding-bottom: 120px;
   box-sizing: border-box;
 
   .sort-box {

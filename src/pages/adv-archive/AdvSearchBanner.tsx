@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import trend_back from '../../assets/trend/trend_banner.png';
+import adv_bg from '../../assets/advertisement/adv_bg.png';
 import { Input } from '../../components/common-components/Input/Input';
 import { useState } from 'react';
 import {
@@ -77,7 +77,7 @@ export const AdvSearchBanner = () => {
 };
 
 export const SearchBannerContainer = styled.div`
-  background-image: url(${trend_back});
+  background-image: url(${adv_bg});
   background-size: cover;
   width: 100%;
   /* height: 573px; */

@@ -5,9 +5,13 @@ import { AdvertiseItemProps } from '../../components/advertisement-archive/Adver
 import { AdvSearchBanner } from './AdvSearchBanner';
 
 export const AdvArchivePage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [sortType, setSortType] = useState<string>('LATEST');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [kwdVal, setKwdVal] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [startDate, setStartDate] = useState<string>('2024-02-01');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [endDate, setEndDate] = useState<string>('2024-02-29');
 
   const [advData, setAdvData] = useState<AdvertiseItemProps[]>();
