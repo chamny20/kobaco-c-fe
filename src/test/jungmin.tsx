@@ -1,7 +1,9 @@
-import React from 'react';
+//import React from 'react';
 import Chip from '../components/common-components/Chip/Chip';
 import FullTab from '../components/common-components/FullTab';
 import Tooltips from '../components/common-components/Tooltip';
+import SexChart from '../components/chart/SexChart';
+import MonthChart from '../components/chart/MonthChart';
 
 const TestJungmin = () => {
   const tabs = [
@@ -33,6 +35,8 @@ const TestJungmin = () => {
         실험실험
       </Chip>
       <Tooltips content={tooltipContent} direction="bottom-start" />
+      <MonthChart />
+      <SexChart />
     </div>
   );
 };
