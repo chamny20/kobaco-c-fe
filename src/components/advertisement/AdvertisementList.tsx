@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { AdvertiseItemProps, AdvertisementItem } from './AdvertisementItem';
+import { Menu, MenuItem } from '@mui/material';
+import { useState } from 'react';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 export const dummyData = [
   {
@@ -53,9 +57,59 @@ export const dummyData = [
 ];
 
 export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = (selectedSort: string) => {
+    setSort(selectedSort);
+    setAnchorEl(null);
+  };
+  const [sort, setSort] = useState<string>('최신순');
+
   return (
     <AdvertisementListContainer>
-      <div>sorting area</div>
+      <div>
+        <CustomButton
+          id="basic-button"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+        >
+          <span>{sort}</span>
+          <span>{open ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}</span>
+        </CustomButton>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={() => setAnchorEl(null)}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+          sx={{ fontFamily: 'Pretendard', marginTop: '3px' }}
+        >
+          <MenuItem
+            sx={{ fontFamily: 'Pretendard' }}
+            style={{}}
+            onClick={() => handleClose('최신순')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#D33B4D')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#424242')}
+          >
+            최신순
+          </MenuItem>
+          <MenuItem
+            sx={{ fontFamily: 'Pretendard' }}
+            onClick={() => handleClose('관련도순')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#D33B4D')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#424242')}
+          >
+            관련도순
+          </MenuItem>
+        </Menu>
+      </div>
       <ListWrapper>
         {data.map((item) => {
           return (
@@ -86,4 +140,32 @@ export const ListWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
   gap: 28px;
+`;
+
+export const CustomButton = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 4px;
+  width: 100px;
+  color: #424242;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 180%;
+  letter-spacing: -0.32px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    fill: ${(props) => props.theme.gray_02};
+  }
 `;
