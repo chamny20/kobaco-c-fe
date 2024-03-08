@@ -11,8 +11,8 @@ import {
 import {
   AdvertisementList,
   dummyData,
-} from '../components/advertisement/AdvertisementList';
-import { SimilarItem } from '../components/advertisement/SimilarItem';
+} from '../components/advertisement-archive/AdvertisementList';
+import { SimilarItem } from '../components/advertisement-detail/SimilarItem';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -43,7 +43,7 @@ export const TestChaemin = () => {
           </div>
         </Card>
 
-        <SimilarItem />
+        {/* <SimilarItem /> */}
 
         {/* <AdvertisementList data={dummyData} /> */}
 

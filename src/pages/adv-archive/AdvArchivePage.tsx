@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AdvertisementList } from '../../components/advertisement/AdvertisementList';
+import { AdvertisementList } from '../../components/advertisement-archive/AdvertisementList';
 import { getAdvertisementList } from '../../api/advertisement';
-import { AdvertiseItemProps } from '../../components/advertisement/AdvertisementItem';
+import { AdvertiseItemProps } from '../../components/advertisement-archive/AdvertisementItem';
 import { AdvSearchBanner } from './AdvSearchBanner';
 
 export const AdvArchivePage = () => {
