@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AdvertiseItemProps, AdvertisementItem } from './AdvertisementItem';
 import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
@@ -56,7 +56,13 @@ export const dummyData = [
   },
 ];
 
-export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
+export const AdvertisementList = ({
+  data,
+  setSortType,
+}: {
+  data: AdvertiseItemProps[];
+  setSortType: Dispatch<SetStateAction<string>>;
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -64,6 +70,11 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   };
   const handleClose = (selectedSort: string) => {
     setSort(selectedSort);
+    if (selectedSort === '최신순') {
+      setSortType('LATEST');
+    } else {
+      setSortType('RELATION');
+    }
     setAnchorEl(null);
   };
   const [sort, setSort] = useState<string>('최신순');

@@ -32,7 +32,7 @@ export const AdvArchivePage = () => {
 
   useEffect(() => {
     handleSearch();
-  }, [startDate, endDate, moodQuery, expressionQuery]);
+  }, [startDate, endDate, moodQuery, expressionQuery, sortType]);
 
   const handleSearch = () => {
     const transformedExpressionQuery = expressionQuery.map((query) => {
@@ -87,7 +87,7 @@ export const AdvArchivePage = () => {
         setMoodQuery={setMoodQuery}
         setExpressionQuery={setExpressionQuery}
       />
-      <AdvertisementList data={advData ?? []} />
+      <AdvertisementList data={advData ?? []} setSortType={setSortType} />
     </>
   );
 };
