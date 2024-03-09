@@ -3,8 +3,8 @@ export interface AdvertisementListType {
   kwdVal?: string;
   startDate: string;
   endDate: string;
-  expressionType?: string[];
-  moodType?: string[];
+  expressionType?: string;
+  moodType?: string;
 }
 
 export interface TrendSearchType {

@@ -8,6 +8,8 @@ export type SelectFilterProps = {
   // setMoodData?: Dispatch<SetStateAction<FilterItemType>>;
   filterData: FilterItemType;
   setFilterData: Dispatch<SetStateAction<FilterItemType>>;
+  //
+  setQuery: Dispatch<SetStateAction<string[]>>;
 };
 
 export type FilterItemType = {

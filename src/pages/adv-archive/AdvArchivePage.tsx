@@ -24,16 +24,49 @@ export const AdvArchivePage = () => {
     return date.format('YYYY-MM-DD');
   };
 
+  const [expressionQuery, setExpressionQuery] = useState<string[]>([]);
+  const [moodQuery, setMoodQuery] = useState<string[]>([]);
+
+  console.log('moodQuery', moodQuery);
+  console.log('expressionQuery', expressionQuery);
+  // 결과는 : ['활기찬', '웅장한', '일상적인']
+
   useEffect(() => {
     handleSearch();
-  }, [startDate, endDate]);
+  }, [startDate, endDate, moodQuery, expressionQuery]);
 
   const handleSearch = () => {
+    const transformedExpressionQuery = expressionQuery.map((query) => {
+      switch (query) {
+        case '미소짓는':
+          return 'SMILING';
+        case '슬픈':
+          return 'SAD';
+        case '놀란':
+          return 'SURPRISED';
+        case '무표정':
+          return 'EXPRESSIONLESS';
+        case '화난':
+          return 'ANGRY';
+        case '찡그린':
+          return 'FROWN';
+        case '겁난':
+          return 'SCARED';
+        default:
+          return query;
+      }
+    });
+
     getAdvertisementList({
       sortType: sortType,
       kwdVal: kwdVal,
       startDate: formatDate(startDate ?? dayjs('2024-02-01')),
       endDate: formatDate(endDate ?? dayjs('2024-02-29')),
+      expressionType:
+        transformedExpressionQuery.length > 0
+          ? transformedExpressionQuery.join(',')
+          : undefined,
+      moodType: moodQuery.length > 0 ? moodQuery.join(',') : undefined,
     })
       .then((res) => {
         console.log('res:', res);
@@ -52,6 +85,8 @@ export const AdvArchivePage = () => {
         setStartDate={setStartDate}
         endDate={endDate}
         setEndDate={setEndDate}
+        setMoodQuery={setMoodQuery}
+        setExpressionQuery={setExpressionQuery}
       />
       <AdvertisementList data={advData ?? []} />
     </>

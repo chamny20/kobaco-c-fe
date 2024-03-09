@@ -70,7 +70,7 @@ export const CustomCheckBox = ({
 };
 
 export const SelectFilter = (props: SelectFilterProps) => {
-  const { placeholder, filterData, setFilterData } = props;
+  const { placeholder, filterData, setFilterData, setQuery } = props;
 
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   // const [expressionData, setExpressionData] = useState(filterData);
@@ -82,11 +82,14 @@ export const SelectFilter = (props: SelectFilterProps) => {
     );
     setFilterData(updatedData);
 
-    console.log(
-      'Checked status:',
-      updatedData?.find((item) => item.id === id)?.checked
-    );
-    console.log(updatedData);
+    // console.log(updatedData);
+
+    const checkedValues = updatedData
+      ?.filter((item) => item.checked)
+      .map((item) => item.value);
+
+    console.log('Checked values:', checkedValues);
+    setQuery(checkedValues);
   };
 
   useEffect(() => {

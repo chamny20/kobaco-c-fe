@@ -21,6 +21,10 @@ export type SearchProps = {
   setStartDate: React.Dispatch<React.SetStateAction<Dayjs | null>>; // setStartDate와 setEndDate의 타입도 Dayjs로 변경
   endDate: Dayjs | null;
   setEndDate: React.Dispatch<React.SetStateAction<Dayjs | null>>;
+
+  //
+  setExpressionQuery: Dispatch<SetStateAction<string[]>>;
+  setMoodQuery: Dispatch<SetStateAction<string[]>>;
 };
 
 export const AdvSearchBanner = (props: SearchProps) => {
@@ -32,6 +36,8 @@ export const AdvSearchBanner = (props: SearchProps) => {
     setStartDate,
     endDate,
     setEndDate,
+    setExpressionQuery,
+    setMoodQuery,
   } = props;
 
   const [filterData, setFilterData] = useState(expressionCategory);
@@ -94,11 +100,13 @@ export const AdvSearchBanner = (props: SearchProps) => {
               placeholder="표정 분석"
               filterData={filterData}
               setFilterData={setFilterData}
+              setQuery={setExpressionQuery}
             />
             <SelectFilter
               placeholder="영상 분위기 분석"
               filterData={moodData}
               setFilterData={setMoodData}
+              setQuery={setMoodQuery}
             />
           </div>
         </div>
