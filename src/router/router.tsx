@@ -8,6 +8,7 @@ import ScrollToTop from '../components/ScrollToTop';
 import { SearchPage } from '../pages/searchAnalysis/SearchPage';
 import { AdvArchivePage } from '../pages/adv-archive/AdvArchivePage';
 import { AdvDetailPage } from '../pages/adv-detail/AdvDetailPage';
+import { ScrapPage } from '../pages/scrap/ScrapPage';
 
 export const Router = () => {
   return (
@@ -23,6 +24,7 @@ export const Router = () => {
             path="/adv-archive/:advertisementId"
             element={<AdvDetailPage />}
           />
+          <Route path="/adv-scrap" element={<ScrapPage />} />
 
           {/* test */}
           <Route path="/test" element={<TestChaemin />} />
