@@ -36,7 +36,6 @@ export const ItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 380px;
   width: 100%;
 
   .tag-box {
