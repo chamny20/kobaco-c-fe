@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import adv_bg from '../../assets/advertisement/adv_bg.png';
 import { Input } from '../../components/common-components/Input/Input';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   SelectFilter,
   expressionCategory,
@@ -9,9 +9,39 @@ import {
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { Dayjs } from 'dayjs';
+import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
+// import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
 
-export const AdvSearchBanner = () => {
-  const [keyword, setKeyword] = useState<string>('');
+export type SearchProps = {
+  kwdVal?: string;
+  setKwdVal: Dispatch<SetStateAction<string>>;
+  handleSearch: () => void;
+  startDate: Dayjs | null; // startDate와 endDate의 타입을 Dayjs로 변경
+  setStartDate: React.Dispatch<React.SetStateAction<Dayjs | null>>; // setStartDate와 setEndDate의 타입도 Dayjs로 변경
+  endDate: Dayjs | null;
+  setEndDate: React.Dispatch<React.SetStateAction<Dayjs | null>>;
+
+  //
+  setExpressionQuery: Dispatch<SetStateAction<string[]>>;
+  setMoodQuery: Dispatch<SetStateAction<string[]>>;
+};
+
+export const AdvSearchBanner = (props: SearchProps) => {
+  const {
+    kwdVal,
+    setKwdVal,
+    handleSearch,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    setExpressionQuery,
+    setMoodQuery,
+  } = props;
+
+  const [filterData, setFilterData] = useState(expressionCategory);
+  const [moodData, setMoodData] = useState(moodCategory);
 
   return (
     <SearchBannerContainer>
@@ -29,10 +59,11 @@ export const AdvSearchBanner = () => {
         </div>
         <Input
           placeholder="찾고 싶은 키워드를 검색하세요."
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
+          value={kwdVal ?? ''}
+          onChange={(e) => setKwdVal(e.target.value)}
           size="lg"
           style={{ width: '76%' }}
+          onClick={handleSearch}
         />
         <div className="input-wrapper">
           <div className="date-wrapper">
@@ -44,6 +75,8 @@ export const AdvSearchBanner = () => {
                     borderRadius: '4px',
                     width: '30px',
                   }}
+                  value={startDate}
+                  onChange={(newVal) => setStartDate(newVal)}
                 />
               </DemoContainer>
             </LocalizationProvider>
@@ -56,6 +89,8 @@ export const AdvSearchBanner = () => {
                     borderRadius: '4px',
                     width: '30px',
                   }}
+                  value={endDate}
+                  onChange={(newVal) => setEndDate(newVal)}
                 />
               </DemoContainer>
             </LocalizationProvider>
@@ -63,11 +98,15 @@ export const AdvSearchBanner = () => {
           <div className="filter-container">
             <SelectFilter
               placeholder="표정 분석"
-              filterData={expressionCategory}
+              filterData={filterData}
+              setFilterData={setFilterData}
+              setQuery={setExpressionQuery}
             />
             <SelectFilter
               placeholder="영상 분위기 분석"
-              filterData={expressionCategory}
+              filterData={moodData}
+              setFilterData={setMoodData}
+              setQuery={setMoodQuery}
             />
           </div>
         </div>

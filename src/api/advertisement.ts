@@ -7,6 +7,8 @@ export const getAdvertisementList = async ({
   startDate,
   endDate,
   kwdVal,
+  expressionType,
+  moodType,
 }: AdvertisementListType) => {
   const res = await api.get('/api/advertisement/list', {
     params: {
@@ -14,6 +16,8 @@ export const getAdvertisementList = async ({
       startDate,
       endDate,
       kwdVal,
+      expressionType,
+      moodType,
     },
   });
   return res;

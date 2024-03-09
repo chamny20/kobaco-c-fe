@@ -4,6 +4,7 @@ export type InputProps = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   size?: InputSize;
   style?: React.CSSProperties;
+  onClick: () => void;
 };
 
 export const inputSizes = {
