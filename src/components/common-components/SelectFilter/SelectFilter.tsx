@@ -44,46 +44,6 @@ export const expressionCategory = [
     value: '화난',
     checked: false,
   },
-  {
-    id: 8,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 9,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 10,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 11,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 12,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 13,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 14,
-    value: '화난',
-    checked: false,
-  },
-  {
-    id: 15,
-    value: '화난',
-    checked: false,
-  },
 ];
 
 export const CustomCheckBox = ({
@@ -141,33 +101,35 @@ export const SelectFilter = (props: SelectFilterProps) => {
   }, []);
 
   return (
-    <SelectFilterContainer>
-      <SelectButton
-        onMouseDown={() => setOpenFilter((prev) => !prev)}
-        openFilter={openFilter}
-      >
-        {placeholder}
-        <FilterAltOutlinedIcon />
-      </SelectButton>
+    <>
+      <SelectFilterContainer>
+        <SelectButton
+          onMouseDown={() => setOpenFilter((prev) => !prev)}
+          $openFilter={openFilter}
+        >
+          {placeholder}
+          <FilterAltOutlinedIcon />
+        </SelectButton>
 
-      <Transition show={openFilter}>
-        <DropDownWrapper ref={dropdownRef}>
-          <Transition.Child>
-            {expressionData.map((item) => {
-              return (
-                <div className="check-item" key={item.id}>
-                  <CustomCheckBox
-                    checked={item.checked}
-                    onChange={() => handleCheckBoxChange(item.id)}
-                  />
-                  <p>{item.value}</p>
-                </div>
-              );
-            })}
-          </Transition.Child>
-        </DropDownWrapper>
-      </Transition>
-    </SelectFilterContainer>
+        <Transition show={openFilter}>
+          <DropDownWrapper ref={dropdownRef}>
+            <Transition.Child>
+              {expressionData.map((item) => {
+                return (
+                  <div className="check-item" key={item.id}>
+                    <CustomCheckBox
+                      checked={item.checked}
+                      onChange={() => handleCheckBoxChange(item.id)}
+                    />
+                    <p>{item.value}</p>
+                  </div>
+                );
+              })}
+            </Transition.Child>
+          </DropDownWrapper>
+        </Transition>
+      </SelectFilterContainer>
+    </>
   );
 };
 
@@ -175,10 +137,11 @@ export const SelectFilterContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  z-index: 9999;
 `;
 
-export const SelectButton = styled.button<{ openFilter: boolean }>`
-  border-radius: ${({ openFilter }) => (openFilter ? '6px 6px 0 0' : '6px')};
+export const SelectButton = styled.button<{ $openFilter: boolean }>`
+  border-radius: ${(props) => (props.$openFilter ? '6px 6px 0 0' : '6px')};
   border: 1px solid ${(props) => props.theme.gray_05};
   background: var(--White, #fff);
   width: 100%;
