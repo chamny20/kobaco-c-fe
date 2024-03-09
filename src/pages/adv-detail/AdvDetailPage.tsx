@@ -23,6 +23,8 @@ import {
   AdvExpression,
   ExpressionProps,
 } from '../../components/advertisement-detail/AdvExpression';
+import { ScrollContainer } from '../../components/animation/ScrollContainer';
+import { ObjectAnalysis } from '../../components/advertisement-detail/ObjectAnalysis';
 
 export const AdvDetailPage = () => {
   const { advertisementId } = useParams();
@@ -76,20 +78,25 @@ export const AdvDetailPage = () => {
   }, []);
 
   return (
-    <AdvDetailPageContainer>
+    <ScrollContainer>
       <div>
-        <AdvInfo data={infoData as AdvInfoProps} />
-        <Divider />
-        <AdvAnalysis data={analData as AdvAnalysisProps} />
-        <AdvExpression data={expressionData as ExpressionProps} />
+        <AdvDetailPageContainer>
+          <div>
+            <AdvInfo data={infoData as AdvInfoProps} />
+            <Divider />
+            <AdvAnalysis data={analData as AdvAnalysisProps} />
+            <AdvExpression data={expressionData as ExpressionProps} />
+          </div>
+          <div>
+            <SimilarItem
+              data={similarData as SimilarItemProps}
+              mood={moodInfo ?? []}
+            />
+          </div>
+        </AdvDetailPageContainer>
+        <ObjectAnalysis />
       </div>
-      <div>
-        <SimilarItem
-          data={similarData as SimilarItemProps}
-          mood={moodInfo ?? []}
-        />
-      </div>
-    </AdvDetailPageContainer>
+    </ScrollContainer>
   );
 };
 
@@ -97,7 +104,6 @@ export const AdvDetailPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   max-width: 1300px;
-  border: 1px solid red;
   padding: 40px 0px;
   box-sizing: border-box;
   gap: 32px;

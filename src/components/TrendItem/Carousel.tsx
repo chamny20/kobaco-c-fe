@@ -246,7 +246,7 @@ export const StyledDate = styled.div`
 
   // font
   color: ${(props) => props.theme.gray_01};
-  font-size: 18px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

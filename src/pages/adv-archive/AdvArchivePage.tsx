@@ -3,6 +3,7 @@ import { AdvertisementList } from '../../components/advertisement-archive/Advert
 import { getAdvertisementList } from '../../api/advertisement';
 import { AdvertiseItemProps } from '../../components/advertisement-archive/AdvertisementItem';
 import { AdvSearchBanner } from './AdvSearchBanner';
+import { ScrollContainer } from '../../components/animation/ScrollContainer';
 
 export const AdvArchivePage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,8 +34,12 @@ export const AdvArchivePage = () => {
   return (
     <>
       {/* TODO : prop으로 sortType, kwdVal, startDate, endDate */}
-      <AdvSearchBanner />
-      <AdvertisementList data={advData ?? []} />
+      <ScrollContainer>
+        <AdvSearchBanner />
+      </ScrollContainer>
+      <ScrollContainer>
+        <AdvertisementList data={advData ?? []} />
+      </ScrollContainer>
     </>
   );
 };

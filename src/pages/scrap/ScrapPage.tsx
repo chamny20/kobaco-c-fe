@@ -9,8 +9,11 @@ import {
 import styled from 'styled-components';
 
 export const ScrapPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [kwdVal, setKwdVal] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [moodType, setMoodType] = useState<string[]>();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [expressionType, setExpressionType] = useState<string[]>();
 
   const [advScrappedData, setAdvScrappedData] = useState();

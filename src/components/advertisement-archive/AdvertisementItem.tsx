@@ -1,6 +1,8 @@
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export type AdvertiseItemProps = {
   advertisementId?: number;
@@ -26,19 +28,41 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
     time,
     moodInfo,
     topExpression,
+    advertisementId,
   } = props;
+
+  const navigate = useNavigate();
+
+  const spaceTo = (page: string) => {
+    navigate(page);
+  };
+
+  const [isBookmarked, setIsBookmarked] = useState(isArchived);
+
+  const handleBookmarkClick = () => {
+    setIsBookmarked((prev) => !prev);
+  };
 
   return (
     <AdvWrapper>
-      <StyledImg src={videoUrl} alt="video-thumnail" />
+      <StyledImg
+        src={videoUrl}
+        alt="video-thumnail"
+        onClick={() => spaceTo(`/adv-archive/${advertisementId}`)}
+      />
       <div className="title-line">
-        <div>{title}</div>
-        {isArchived ? (
-          <BookmarkIcon />
+        <div onClick={() => spaceTo(`/adv-archive/${advertisementId}`)}>
+          {title}
+        </div>
+        {isBookmarked ? (
+          <BookmarkIcon
+            onClick={handleBookmarkClick}
+            style={{ cursor: 'pointer' }}
+          />
         ) : (
           <BookmarkBorderIcon
-          // onClick={handleScrappedClick}
-          // className="fill-gray-60 mr-[20px]"
+            onClick={handleBookmarkClick}
+            style={{ cursor: 'pointer' }}
           />
         )}
       </div>

@@ -4,7 +4,6 @@ import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
 import { useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import { useNavigate } from 'react-router-dom';
 
 export const dummyData = [
   {
@@ -72,6 +71,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   // pagination
   const itemsPerPage = 16;
   const [page, setPage] = useState<number>(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
@@ -79,12 +79,6 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedData = data.slice(startIndex, endIndex);
-
-  const navigate = useNavigate();
-
-  const spaceTo = (page: string) => {
-    navigate(page);
-  };
 
   return (
     <AdvertisementListContainer>
@@ -131,10 +125,9 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
       <ListWrapper>
         {displayedData.map((item) => {
           return (
-            <div
-              onClick={() => spaceTo(`/adv-archive/${item.advertisementId}`)}
-            >
+            <div>
               <AdvertisementItem
+                advertisementId={item.advertisementId}
                 key={item.advertisementId}
                 title={item.title}
                 videoUrl={item.videoUrl}

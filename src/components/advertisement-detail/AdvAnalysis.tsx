@@ -47,7 +47,6 @@ export const AdvAnalysisContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  border: 1px solid black;
   max-width: 920px;
   width: 100%;
 

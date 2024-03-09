@@ -1,4 +1,3 @@
-import React from 'react';
 import Chip from '../components/common-components/Chip/Chip';
 import FullTab from '../components/common-components/FullTab';
 import Tooltips from '../components/common-components/Tooltip';
