@@ -24,6 +24,7 @@ import {
   ExpressionProps,
 } from '../../components/advertisement-detail/AdvExpression';
 import { ScrollContainer } from '../../components/animation/ScrollContainer';
+import { ObjectAnalysis } from '../../components/advertisement-detail/ObjectAnalysis';
 
 export const AdvDetailPage = () => {
   const { advertisementId } = useParams();
@@ -78,20 +79,23 @@ export const AdvDetailPage = () => {
 
   return (
     <ScrollContainer>
-      <AdvDetailPageContainer>
-        <div>
-          <AdvInfo data={infoData as AdvInfoProps} />
-          <Divider />
-          <AdvAnalysis data={analData as AdvAnalysisProps} />
-          <AdvExpression data={expressionData as ExpressionProps} />
-        </div>
-        <div>
-          <SimilarItem
-            data={similarData as SimilarItemProps}
-            mood={moodInfo ?? []}
-          />
-        </div>
-      </AdvDetailPageContainer>
+      <div>
+        <AdvDetailPageContainer>
+          <div>
+            <AdvInfo data={infoData as AdvInfoProps} />
+            <Divider />
+            <AdvAnalysis data={analData as AdvAnalysisProps} />
+            <AdvExpression data={expressionData as ExpressionProps} />
+          </div>
+          <div>
+            <SimilarItem
+              data={similarData as SimilarItemProps}
+              mood={moodInfo ?? []}
+            />
+          </div>
+        </AdvDetailPageContainer>
+        <ObjectAnalysis />
+      </div>
     </ScrollContainer>
   );
 };

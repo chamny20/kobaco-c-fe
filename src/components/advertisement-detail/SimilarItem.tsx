@@ -15,12 +15,14 @@ export const SimilarItem = ({
   data: SimilarItemProps;
   mood: string[];
 }) => {
+  const trimmedData = data?.slice(0, 10);
+
   return (
     <>
       <SimTitle>비슷한 분위기의 영상</SimTitle>
       <SimTag>{mood?.map((item, idx) => <div key={idx}>#{item}</div>)}</SimTag>
 
-      {data?.map((item, idx) => {
+      {trimmedData?.map((item, idx) => {
         return (
           <SimilarItemContainer key={idx}>
             <img src={item.videoUrl} alt="" />
