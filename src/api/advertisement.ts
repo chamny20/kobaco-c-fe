@@ -1,5 +1,5 @@
 import { api } from '.';
-import { AdvertisementListType } from '../types/api';
+import { AdvertisementListType, ScrappedAdvType } from '../types/api';
 
 // 광고 리스트 조회
 export const getAdvertisementList = async ({
@@ -57,5 +57,21 @@ export const getAdvertisementAiAnalysisCategory = async (
 // 광고 스크랩
 export const getAdvertisementScrap = async (advertisementId: number) => {
   const res = await api.patch(`/api/advertisement/archive/${advertisementId}`);
+  return res;
+};
+
+// 스크랩한 광고 조회
+export const getScrappedAdvertisementList = async ({
+  moodType,
+  expressionType,
+  kwdVal,
+}: ScrappedAdvType) => {
+  const res = await api.get('/api/advertisement/archive', {
+    params: {
+      moodType,
+      expressionType,
+      kwdVal,
+    },
+  });
   return res;
 };
