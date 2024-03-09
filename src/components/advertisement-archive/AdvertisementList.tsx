@@ -71,6 +71,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   // pagination
   const itemsPerPage = 16;
   const [page, setPage] = useState<number>(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
