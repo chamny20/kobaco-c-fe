@@ -12,6 +12,7 @@ import { ResponsiveBullet } from '@nivo/bullet';
 import { InstaItem } from '../components/sns/InstaItem';
 import { InstaArchive } from '../components/sns/InstaArchive';
 import { YoutubeArchive } from '../components/sns/YoutubeArchive';
+import { NaverArchive } from '../components/sns/NaverArchive';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -32,6 +33,7 @@ export const TestChaemin = () => {
 
       <InstaArchive />
       <YoutubeArchive />
+      <NaverArchive />
 
       <div style={{ margin: '10px 30px' }}>
         <SelectFilter
