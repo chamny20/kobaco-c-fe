@@ -85,6 +85,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   const spaceTo = (page: string) => {
     navigate(page);
   };
+
   return (
     <AdvertisementListContainer>
       <div className="sort-box">
@@ -140,6 +141,8 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
                 createdAt={item.createdAt}
                 isArchived={item.isArchived}
                 time={item.time}
+                topExpression={item.topExpression}
+                moodInfo={item.moodInfo}
               />
             </div>
           );
