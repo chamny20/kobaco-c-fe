@@ -9,3 +9,9 @@ export interface TrendSearchType {
   kwdVal: string;
   snsType: string;
 }
+
+export interface ScrappedAdvType {
+  kwdVal?: string;
+  expressionType?: string[];
+  moodType?: string[];
+}
