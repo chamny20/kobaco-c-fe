@@ -9,15 +9,28 @@ import {
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { Dayjs } from 'dayjs';
 
 export type SearchProps = {
   kwdVal?: string;
   setKwdVal: Dispatch<SetStateAction<string>>;
   handleSearch: () => void;
+  startDate: Dayjs | null; // startDate와 endDate의 타입을 Dayjs로 변경
+  setStartDate: React.Dispatch<React.SetStateAction<Dayjs | null>>; // setStartDate와 setEndDate의 타입도 Dayjs로 변경
+  endDate: Dayjs | null;
+  setEndDate: React.Dispatch<React.SetStateAction<Dayjs | null>>;
 };
 
 export const AdvSearchBanner = (props: SearchProps) => {
-  const { kwdVal, setKwdVal, handleSearch } = props;
+  const {
+    kwdVal,
+    setKwdVal,
+    handleSearch,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+  } = props;
 
   return (
     <SearchBannerContainer>
@@ -51,6 +64,8 @@ export const AdvSearchBanner = (props: SearchProps) => {
                     borderRadius: '4px',
                     width: '30px',
                   }}
+                  value={startDate}
+                  onChange={(newVal) => setStartDate(newVal)}
                 />
               </DemoContainer>
             </LocalizationProvider>
@@ -63,6 +78,8 @@ export const AdvSearchBanner = (props: SearchProps) => {
                     borderRadius: '4px',
                     width: '30px',
                   }}
+                  value={endDate}
+                  onChange={(newVal) => setEndDate(newVal)}
                 />
               </DemoContainer>
             </LocalizationProvider>
