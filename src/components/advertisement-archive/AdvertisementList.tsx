@@ -125,7 +125,7 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
       <ListWrapper>
         {displayedData.map((item) => {
           return (
-            <div>
+            <div key={item.advertisementId}>
               <AdvertisementItem
                 advertisementId={item.advertisementId}
                 key={item.advertisementId}
