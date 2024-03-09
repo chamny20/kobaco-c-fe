@@ -9,6 +9,8 @@ import {
 } from '../components/common-components/SelectFilter/SelectFilter';
 
 import { ResponsiveBullet } from '@nivo/bullet';
+import { InstaItem } from '../components/sns/InstaItem';
+import { InstaArchive } from '../components/sns/InstaArchive';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -26,6 +28,9 @@ export const TestChaemin = () => {
       </Button>
       <TestDiv>테스트인데볼드가될까요되네요</TestDiv>
       <div>이건 그냥 버전</div> */}
+
+      <InstaArchive />
+
       <div style={{ margin: '10px 30px' }}>
         <SelectFilter
           placeholder="표정 분석sss"
