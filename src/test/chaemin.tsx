@@ -11,6 +11,7 @@ import {
 import { ResponsiveBullet } from '@nivo/bullet';
 import { InstaItem } from '../components/sns/InstaItem';
 import { InstaArchive } from '../components/sns/InstaArchive';
+import { YoutubeArchive } from '../components/sns/YoutubeArchive';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -30,6 +31,7 @@ export const TestChaemin = () => {
       <div>이건 그냥 버전</div> */}
 
       <InstaArchive />
+      <YoutubeArchive />
 
       <div style={{ margin: '10px 30px' }}>
         <SelectFilter
