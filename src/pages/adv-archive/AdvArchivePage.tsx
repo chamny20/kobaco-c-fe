@@ -3,7 +3,6 @@ import { AdvertisementList } from '../../components/advertisement-archive/Advert
 import { getAdvertisementList } from '../../api/advertisement';
 import { AdvertiseItemProps } from '../../components/advertisement-archive/AdvertisementItem';
 import { AdvSearchBanner } from './AdvSearchBanner';
-import { ScrollContainer } from '../../components/animation/ScrollContainer';
 import dayjs from 'dayjs';
 
 export const AdvArchivePage = () => {
@@ -45,20 +44,16 @@ export const AdvArchivePage = () => {
 
   return (
     <>
-      <ScrollContainer>
-        <AdvSearchBanner
-          kwdVal={kwdVal}
-          setKwdVal={setKwdVal}
-          handleSearch={handleSearch}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
-        />
-      </ScrollContainer>
-      <ScrollContainer>
-        <AdvertisementList data={advData ?? []} />
-      </ScrollContainer>
+      <AdvSearchBanner
+        kwdVal={kwdVal}
+        setKwdVal={setKwdVal}
+        handleSearch={handleSearch}
+        startDate={startDate}
+        setStartDate={setStartDate}
+        endDate={endDate}
+        setEndDate={setEndDate}
+      />
+      <AdvertisementList data={advData ?? []} />
     </>
   );
 };
