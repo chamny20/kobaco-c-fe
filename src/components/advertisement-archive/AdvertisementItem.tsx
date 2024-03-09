@@ -28,8 +28,8 @@ export const AdvertisementItem = (props: AdvertiseItemProps) => {
     time,
     moodInfo,
     topExpression,
- , advertisementId } =
-    props;
+    advertisementId,
+  } = props;
 
   const navigate = useNavigate();
 

@@ -79,12 +79,6 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   const endIndex = startIndex + itemsPerPage;
   const displayedData = data.slice(startIndex, endIndex);
 
-  const navigate = useNavigate();
-
-  const spaceTo = (page: string) => {
-    navigate(page);
-  };
-
   return (
     <AdvertisementListContainer>
       <div className="sort-box">
