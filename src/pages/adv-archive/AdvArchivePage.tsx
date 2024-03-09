@@ -17,7 +17,25 @@ export const AdvArchivePage = () => {
 
   const [advData, setAdvData] = useState<AdvertiseItemProps[]>();
 
+  // useEffect(() => {
+  //   getAdvertisementList({
+  //     sortType: sortType,
+  //     kwdVal: kwdVal,
+  //     startDate: startDate,
+  //     endDate: endDate,
+  //   })
+  //     .then((res) => {
+  //       console.log('res:', res);
+  //       setAdvData(res.data.advertisementSimpleResponses);
+  //     })
+  //     .catch((err) => console.log('err:', err));
+  // }, [kwdVal]);
+
   useEffect(() => {
+    handleSearch();
+  }, []);
+
+  const handleSearch = () => {
     getAdvertisementList({
       sortType: sortType,
       kwdVal: kwdVal,
@@ -29,13 +47,17 @@ export const AdvArchivePage = () => {
         setAdvData(res.data.advertisementSimpleResponses);
       })
       .catch((err) => console.log('err:', err));
-  }, []);
+  };
 
   return (
     <>
       {/* TODO : prop으로 sortType, kwdVal, startDate, endDate */}
       <ScrollContainer>
-        <AdvSearchBanner />
+        <AdvSearchBanner
+          kwdVal={kwdVal}
+          setKwdVal={setKwdVal}
+          handleSearch={handleSearch}
+        />
       </ScrollContainer>
       <ScrollContainer>
         <AdvertisementList data={advData ?? []} />

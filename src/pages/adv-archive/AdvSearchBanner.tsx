@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import adv_bg from '../../assets/advertisement/adv_bg.png';
 import { Input } from '../../components/common-components/Input/Input';
-import { useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import {
   SelectFilter,
   expressionCategory,
@@ -10,8 +10,14 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 
-export const AdvSearchBanner = () => {
-  const [keyword, setKeyword] = useState<string>('');
+export type SearchProps = {
+  kwdVal?: string;
+  setKwdVal: Dispatch<SetStateAction<string>>;
+  handleSearch: () => void;
+};
+
+export const AdvSearchBanner = (props: SearchProps) => {
+  const { kwdVal, setKwdVal, handleSearch } = props;
 
   return (
     <SearchBannerContainer>
@@ -29,10 +35,11 @@ export const AdvSearchBanner = () => {
         </div>
         <Input
           placeholder="찾고 싶은 키워드를 검색하세요."
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
+          value={kwdVal ?? ''}
+          onChange={(e) => setKwdVal(e.target.value)}
           size="lg"
           style={{ width: '76%' }}
+          onClick={handleSearch}
         />
         <div className="input-wrapper">
           <div className="date-wrapper">
