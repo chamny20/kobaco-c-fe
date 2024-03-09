@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import adv_bg from '../../assets/advertisement/adv_bg.png';
 import { Input } from '../../components/common-components/Input/Input';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import {
   SelectFilter,
   expressionCategory,
@@ -10,6 +10,8 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { Dayjs } from 'dayjs';
+import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
+// import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
 
 export type SearchProps = {
   kwdVal?: string;
@@ -31,6 +33,9 @@ export const AdvSearchBanner = (props: SearchProps) => {
     endDate,
     setEndDate,
   } = props;
+
+  const [filterData, setFilterData] = useState(expressionCategory);
+  const [moodData, setMoodData] = useState(moodCategory);
 
   return (
     <SearchBannerContainer>
@@ -87,11 +92,13 @@ export const AdvSearchBanner = (props: SearchProps) => {
           <div className="filter-container">
             <SelectFilter
               placeholder="표정 분석"
-              filterData={expressionCategory}
+              filterData={filterData}
+              setFilterData={setFilterData}
             />
             <SelectFilter
               placeholder="영상 분위기 분석"
-              filterData={expressionCategory}
+              filterData={moodData}
+              setFilterData={setMoodData}
             />
           </div>
         </div>

@@ -70,17 +70,23 @@ export const CustomCheckBox = ({
 };
 
 export const SelectFilter = (props: SelectFilterProps) => {
-  const { filterData, placeholder } = props;
+  const { placeholder, filterData, setFilterData } = props;
 
   const [openFilter, setOpenFilter] = useState<boolean>(false);
-  const [expressionData, setExpressionData] = useState(filterData);
+  // const [expressionData, setExpressionData] = useState(filterData);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleCheckBoxChange = (id: number) => {
-    const updatedData = expressionData.map((item) =>
+    const updatedData = filterData?.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
     );
-    setExpressionData(updatedData);
+    setFilterData(updatedData);
+
+    console.log(
+      'Checked status:',
+      updatedData?.find((item) => item.id === id)?.checked
+    );
+    console.log(updatedData);
   };
 
   useEffect(() => {
@@ -114,7 +120,7 @@ export const SelectFilter = (props: SelectFilterProps) => {
         <Transition show={openFilter}>
           <DropDownWrapper ref={dropdownRef}>
             <Transition.Child>
-              {expressionData.map((item) => {
+              {filterData?.map((item) => {
                 return (
                   <div className="check-item" key={item.id}>
                     <CustomCheckBox
@@ -137,7 +143,6 @@ export const SelectFilterContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 9999;
 `;
 
 export const SelectButton = styled.button<{ $openFilter: boolean }>`
