@@ -27,9 +27,8 @@ export const AdvArchivePage = () => {
   const [expressionQuery, setExpressionQuery] = useState<string[]>([]);
   const [moodQuery, setMoodQuery] = useState<string[]>([]);
 
-  console.log('moodQuery', moodQuery);
-  console.log('expressionQuery', expressionQuery);
-  // 결과는 : ['활기찬', '웅장한', '일상적인']
+  // console.log('moodQuery', moodQuery);
+  // console.log('expressionQuery', expressionQuery);
 
   useEffect(() => {
     handleSearch();
@@ -69,7 +68,7 @@ export const AdvArchivePage = () => {
       moodType: moodQuery.length > 0 ? moodQuery.join(',') : undefined,
     })
       .then((res) => {
-        console.log('res:', res);
+        // console.log('res:', res);
         setAdvData(res.data.advertisementSimpleResponses);
       })
       .catch((err) => console.log('err:', err));
