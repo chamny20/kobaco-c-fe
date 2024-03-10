@@ -5,10 +5,10 @@ const baseStyles = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.1s ease-in-out;
@@ -26,8 +26,8 @@ const sizeStyles: Record<ChipSize, ReturnType<typeof css>> = {
   `,
   md: css`
     min-height: 23px;
-    width: 99px;
     padding: 3px 12px;
+    width: 120px;
     font-size: 14px;
     font-weight: 500;
     gap: 10px;
