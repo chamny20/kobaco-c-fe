@@ -41,8 +41,11 @@ export function CustomTabPanel(props: TabPanelProps) {
 export const ObjectAnalysis = () => {
   const [tab, setTab] = useState(0);
   const [category, setCategory] = useState<string>('person');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
+    console.log(e);
   };
 
   const [placeInfo, setPlaceInfo] = useState();
@@ -97,9 +100,13 @@ export const ObjectAnalysis = () => {
                   flex: 1,
                   maxWidth: 'none',
                   fontFamily: 'Pretendard',
+                  '& .Mui-selected': {
+                    color: '#D33B4D',
+                  },
                 },
                 '& .MuiTabs-indicator': {
                   backgroundColor: '#D33B4D',
+                  color: '#D33B4D',
                 },
                 '& .Mui-selected': {
                   color: '#D33B4D',

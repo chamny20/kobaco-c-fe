@@ -26,6 +26,7 @@ export const SearchBanner = () => {
           onChange={(e) => setKeyword(e.target.value)}
           size="lg"
           style={{ width: '70%' }}
+          onClick={() => console.log('')}
         />
       </Container>
     </SearchBannerContainer>

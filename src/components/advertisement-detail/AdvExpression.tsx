@@ -50,7 +50,7 @@ export const AdvExpression = ({ data }: { data: ExpressionProps }) => {
     }
   }, [data?.expressionList]);
 
-  console.log(sortedExpressions);
+  console.log(sortedExpressions, setExpressionTag);
   console.log(percentageArray);
 
   const getEmoji = (expression: string) => {
