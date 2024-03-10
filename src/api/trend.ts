@@ -31,3 +31,37 @@ export const getTrendPerson = async ({ trendKwd }: { trendKwd: string }) => {
   });
   return res;
 };
+
+// SNS 트렌드 검색
+export const getTrendArchive = async ({
+  trendKwd,
+  snsType,
+}: {
+  trendKwd: string;
+  snsType: string;
+}) => {
+  const res = await api.get(`/api/trend`, {
+    params: {
+      trendKwd,
+      snsType,
+    },
+  });
+  return res;
+};
+
+// SNS 트렌드 검색
+export const getTrendNaver = async ({
+  trendKwd,
+  order,
+}: {
+  trendKwd: string;
+  order: string;
+}) => {
+  const res = await api.get(`/api/trend/archiving`, {
+    params: {
+      trendKwd,
+      order,
+    },
+  });
+  return res;
+};

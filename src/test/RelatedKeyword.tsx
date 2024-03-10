@@ -4,36 +4,34 @@ import line from './line.png';
 export const RelatedKeyword = () => {
   return (
     <RelatedKeywordWrapper>
-      <SubCircle1>텍스트</SubCircle1>
-      <SubCircle2>텍스트</SubCircle2>
-      <SubCircle3>텍스트</SubCircle3>
-      <SubCircle4>텍스트</SubCircle4>
-      <SubCircle5>텍스트</SubCircle5>
-      <SubCircle6>텍스트</SubCircle6>
-      <SubCircle7>텍스트</SubCircle7>
-      <SubCircle8>텍스트</SubCircle8>
-      <MainCircle>텍스트</MainCircle>
+      <SubCircle1>투피스</SubCircle1>
+      <SubCircle2>데이트</SubCircle2>
+      <SubCircle3>상견례</SubCircle3>
+      <SubCircle4>결혼식</SubCircle4>
+      <SubCircle5>여친룩</SubCircle5>
+      <SubCircle6>목걸이</SubCircle6>
+      <SubCircle7>자켓</SubCircle7>
+      <SubCircle8>치마</SubCircle8>
+      <MainCircle>원피스</MainCircle>
       <img className="img" src={line} alt="" />
     </RelatedKeywordWrapper>
   );
 };
 
 export const RelatedKeywordWrapper = styled.div`
-  border: 1px solid black;
-  justify-content: center;
-  max-width: 1100px;
-  width: 100%;
-  height: 100%;
+  // 필요에 따라 크기 조절
+  max-width: 60%; // 특정 너비를 설정하거나 max-width 사용
+  height: auto; // 내용에 따라 높이 조절
   display: flex;
   position: relative;
-  /* min-height: 870px; */
   margin: 100px auto;
+  justify-content: center;
+  align-items: center;
 
   img {
     position: absolute;
   }
 `;
-
 export const MainCircle = styled.div`
   border-radius: 100%;
   background-image: url(${line});
@@ -55,7 +53,7 @@ export const MainCircle = styled.div`
   font-weight: 500;
   line-height: 180%; /* 115.2px */
   letter-spacing: -1.28px;
-  margin-top: 90px;
+  margin-top: 60px;
   margin-left: 40px;
   z-index: 999;
 `;
@@ -81,8 +79,8 @@ export const SubCircle1 = styled.div`
   letter-spacing: -0.64px;
   //
   position: absolute;
-  top: -100px;
-  right: 80px;
+  top: -210px;
+  right: -120px;
 `;
 
 export const SubCircle2 = styled.div`
@@ -105,8 +103,8 @@ export const SubCircle2 = styled.div`
   line-height: 180%;
   letter-spacing: -0.64px;
   position: absolute;
-  top: 5px;
-  left: 220px;
+  top: -90px;
+  left: -10px;
   z-index: 999;
 `;
 
@@ -124,8 +122,8 @@ export const SubCircle3 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: -120px;
-  left: 490px;
+  top: -200px;
+  left: 270px;
   z-index: 999;
   font-family: Pretendard;
   font-size: 32px;
@@ -150,8 +148,8 @@ export const SubCircle4 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: 520px;
-  left: 500px;
+  top: 330px;
+  left: 600px;
   z-index: 999;
   font-size: 32px;
   font-style: normal;
@@ -163,8 +161,8 @@ export const SubCircle4 = styled.div`
 
 export const SubCircle5 = styled.div`
   display: inline-flex;
-  max-width: 140px;
-  height: 140px;
+  max-width: 130px;
+  height: 130px;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -176,8 +174,8 @@ export const SubCircle5 = styled.div`
   background: var(--red-red-0280, #dc6271);
   color: var(--White, #fff);
   position: absolute;
-  top: 460px;
-  left: 200px;
+  top: 340px;
+  left: -40px;
   z-index: 999;
   font-size: 32px;
   font-style: normal;
@@ -200,8 +198,8 @@ export const SubCircle6 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: 200px;
-  left: -30px;
+  top: 120px;
+  left: -250px;
   z-index: 999;
   font-size: 32px;
   font-style: normal;
@@ -225,8 +223,8 @@ export const SubCircle7 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: 200px;
-  right: -20px;
+  top: 110px;
+  right: -250px;
   z-index: 999;
   font-size: 32px;
   font-style: normal;
@@ -238,8 +236,8 @@ export const SubCircle7 = styled.div`
 
 export const SubCircle8 = styled.div`
   display: inline-flex;
-  max-width: 140px;
-  height: 140px;
+  max-width: 100px;
+  height: 100px;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -251,10 +249,10 @@ export const SubCircle8 = styled.div`
   background: var(--red-red-0280, #dc6271);
   color: var(--White, #fff);
   position: absolute;
-  top: 440px;
-  right: 160px;
+  top: 370px;
+  right: 255px;
   z-index: 999;
-  font-size: 32px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 500;
   line-height: 180%; /* 57.6px */
