@@ -77,11 +77,8 @@ const SnsTab: React.FC<SnsTabProps> = () => {
                 title="네이버 콘텐츠 아카이브"
                 subTitle="검색한 키워드 기준 최근 30일 내 발행 된 네이버 최신 콘텐츠(블로그, 뉴스)를 제공합니다."
               >
-                <CardGraph title="연관 해시태그 키워드 TOP 5">
-                  <InstaChart />
-                </CardGraph>
+                <NaverArchive />
               </Card>
-              <NaverArchive />
             </InnerContainer>
           </StyledContainer>
         </div>

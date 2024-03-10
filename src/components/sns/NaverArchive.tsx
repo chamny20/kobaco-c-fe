@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Card } from '../common-components/Card/Card';
 import { NaverItem, NaverItemProps } from './NaverItem';
 import { CustomButton } from '../advertisement-archive/AdvertisementList';
 import { Menu, MenuItem } from '@mui/material';
@@ -42,10 +41,7 @@ export const NaverArchive = () => {
   }, []);
 
   return (
-    <Card
-      title="인스타그램 콘텐츠 아카이브"
-      subTitle="* 2022년 11월 이후 수집한 인스타그램 콘텐츠 중 검색 키워드를 포함하는 콘텐츠입니다."
-    >
+    <>
       <SortContainer>
         <div className="sort-box">
           <CustomButton
@@ -101,7 +97,7 @@ export const NaverArchive = () => {
           );
         })}
       </ItemWrapper>
-    </Card>
+    </>
   );
 };
 
