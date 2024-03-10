@@ -8,6 +8,8 @@ import {
 } from '../../components/common-components/SelectFilter/SelectFilter';
 import styled from 'styled-components';
 import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
+import { BreadContainer } from '../adv-archive/AdvSearchBanner';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export const ScrapPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -47,6 +49,14 @@ export const ScrapPage = () => {
 
   return (
     <ScrapPageWrapper>
+      <BreadContainer>
+        <span className="first-black">광고 아카이브</span>
+        <span className="arrow-red-icon">
+          <ArrowForwardIosIcon />
+        </span>
+        <span className="third-red">스크랩한 광고</span>
+      </BreadContainer>
+
       <div className="title">스크랩한 광고 검색</div>
       <div className="input-box">
         <Input
@@ -96,7 +106,7 @@ export const ScrapPageWrapper = styled.div`
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.48px;
-    margin-bottom: 25px;
+    margin: 25px 0px;
   }
 
   .input-box {

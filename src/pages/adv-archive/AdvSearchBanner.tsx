@@ -12,6 +12,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { Dayjs } from 'dayjs';
 import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
 // import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export type SearchProps = {
   kwdVal?: string;
@@ -46,6 +47,13 @@ export const AdvSearchBanner = (props: SearchProps) => {
   return (
     <SearchBannerContainer>
       <Container>
+        <BreadContainer>
+          <span className="first-item">광고 아카이브</span>
+          <span className="arrow-icon">
+            <ArrowForwardIosIcon />
+          </span>
+          <span className="second-item">광고 분석</span>
+        </BreadContainer>
         <div className="banner-title">
           <p>내가 만들 광고와 관련된</p>
           <p>참고 영상을 찾고 분석하고 싶다면?</p>
@@ -120,8 +128,8 @@ export const SearchBannerContainer = styled.div`
   background-size: cover;
   width: 100%;
   /* height: 573px; */
-  padding: 100px 0px;
-  padding-bottom: 40px;
+  padding: 50px 0px;
+  /* padding-bottom: 40px; */
   box-sizing: border-box;
 `;
 
@@ -179,5 +187,55 @@ export const Container = styled.div`
       line-height: 180%;
       letter-spacing: -0.4px;
     }
+  }
+`;
+
+export const BreadContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  justify-content: flex-end;
+
+  svg {
+    font-size: 14px;
+  }
+
+  .first-item {
+    color: var(--red-red-0430, #f2c4ca);
+    cursor: pointer;
+  }
+
+  .first-black {
+    color: var(--Gray-Gray_02, #7b7b7b);
+  }
+
+  .arrow-icon {
+    color: white;
+  }
+
+  .arrow-black-icon {
+    color: var(--Gray-Gray_02, #7b7b7b);
+  }
+
+  .arrow-red-icon {
+    color: var(--red-red-0280, #dc6271);
+  }
+
+  .third-red {
+    color: var(--red-red-0280, #dc6271);
+  }
+
+  .second-item {
+    color: white;
+    cursor: pointer;
+  }
+
+  .first-black-item {
+    color: var(--Gray-Gray_02, #7b7b7b);
   }
 `;
