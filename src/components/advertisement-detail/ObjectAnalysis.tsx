@@ -89,13 +89,6 @@ export const ObjectAnalysis = () => {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              '& .MuiTabs-indicator': {
-                backgroundColor: '#D33B4D',
-                color: '#D33B4D',
-              },
-              '& .Mui-selected': {
-                color: '#D33B4D',
-              },
             }}
           >
             <Tabs
@@ -107,6 +100,9 @@ export const ObjectAnalysis = () => {
                   flex: 1,
                   maxWidth: 'none',
                   fontFamily: 'Pretendard',
+                  '& .Mui-selected': {
+                    color: '#D33B4D',
+                  },
                 },
                 '& .MuiTabs-indicator': {
                   backgroundColor: '#D33B4D',
