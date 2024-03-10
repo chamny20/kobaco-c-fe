@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import trend_back from '../../assets/trend/trend_banner.png';
 import { Input } from '../../components/common-components/Input/Input';
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 export const SearchBanner = () => {
   const [keyword, setKeyword] = useState<string>('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/search-chart?keyword=${keyword}`);
+  };
 
   return (
     <SearchBannerContainer>
@@ -26,7 +31,7 @@ export const SearchBanner = () => {
           onChange={(e) => setKeyword(e.target.value)}
           size="lg"
           style={{ width: '70%' }}
-          onClick={() => console.log('')}
+          onClick={handleSearch}
         />
       </Container>
     </SearchBannerContainer>
