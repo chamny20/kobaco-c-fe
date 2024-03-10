@@ -100,7 +100,8 @@ export const ObjectAnalysis = () => {
                   flex: 1,
                   maxWidth: 'none',
                   fontFamily: 'Pretendard',
-                  '& .Mui-selected': {
+
+                  '&.Mui-selected': {
                     color: '#D33B4D',
                   },
                 },
@@ -108,7 +109,7 @@ export const ObjectAnalysis = () => {
                   backgroundColor: '#D33B4D',
                   color: '#D33B4D',
                 },
-                '& .Mui-selected': {
+                '&.Mui-selected': {
                   color: '#D33B4D',
                 },
               }}

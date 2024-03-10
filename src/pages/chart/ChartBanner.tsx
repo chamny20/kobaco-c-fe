@@ -3,7 +3,7 @@ import trend_back from '../../assets/trend/trend_banner.png';
 import { Input } from '../../components/common-components/Input/Input';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-export const SearchBanner = () => {
+export const ChartBanner = () => {
   const [keyword, setKeyword] = useState<string>('');
   const navigate = useNavigate();
 
@@ -12,17 +12,13 @@ export const SearchBanner = () => {
   };
 
   return (
-    <SearchBannerContainer>
+    <ChartBannerContainer>
       <Container>
         <div className="banner-title">
-          <p>내가 분석하고 싶은 타겟이</p>
-          <p>어떤 트렌드를 갖고 있는지 궁금하다면?</p>
-          <br />
+          <p>"원피스" 트렌드 분석 결과</p>
           <br />
           <span>
-            시장조사는 광고 홍보 단계 전 필수 단계입니다. <br />
-            소비자들에게 현재 인기 있는 아이템을 알 수 있고, 타겟 그룹이 갖고
-            있는 검색 성향을 분석할 수 있습니다.
+            키워드 "원피스"에 대한 트렌드 분석입니다 <br />
           </span>
         </div>
         <Input
@@ -34,11 +30,11 @@ export const SearchBanner = () => {
           onClick={handleSearch}
         />
       </Container>
-    </SearchBannerContainer>
+    </ChartBannerContainer>
   );
 };
 
-export const SearchBannerContainer = styled.div`
+export const ChartBannerContainer = styled.div`
   background-image: url(${trend_back});
   background-size: cover;
   width: 100vw;

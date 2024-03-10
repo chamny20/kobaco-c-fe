@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 interface TabProps {
   label: string;
@@ -26,7 +27,9 @@ const FullTab: React.FC<TabsProps> = ({ tabs, style }) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+      <Container
+        style={{ display: 'flex', gap: '20px', justifyContent: 'flex-start' }}
+      >
         {tabs.map((tab, index) => (
           <div
             key={index}
@@ -55,7 +58,7 @@ const FullTab: React.FC<TabsProps> = ({ tabs, style }) => {
             </div>
           </div>
         ))}
-      </div>
+      </Container>
       <div style={{ marginTop: '10px' }}>
         <div
           style={{
@@ -71,5 +74,10 @@ const FullTab: React.FC<TabsProps> = ({ tabs, style }) => {
     </div>
   );
 };
+
+export const Container = styled.div`
+  max-width: 1300px;
+  margin: 0 auto;
+`;
 
 export default FullTab;

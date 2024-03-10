@@ -1,41 +1,30 @@
 import styled from 'styled-components';
 import { Card } from '../common-components/Card/Card';
-import { YoutubeItem } from './YoutubeItem';
-
-const dum = [
-  {
-    imageUrl:
-      'https://kobaco2.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20240309_195222248_01.jpg',
-    title: '10년 이상 입을 고퀄 원피스 소개',
-    publisher: '블리티비',
-  },
-  {
-    imageUrl:
-      'https://kobaco2.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20240309_195222248_02.jpg',
-    title: '[vlog] 원피스 입고 데이트',
-    publisher: '단이 dani',
-  },
-  {
-    imageUrl:
-      'https://kobaco2.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20240309_195222248_03.jpg',
-    title: '상견례 룩 갓성비 30개 추천합니다',
-    publisher: '박실장의 패션쇼',
-  },
-  {
-    imageUrl:
-      'https://kobaco2.s3.ap-northeast-2.amazonaws.com/KakaoTalk_20240309_195222248_04.jpg',
-    title: '세상에 싸고 예쁜 옷이 있을까? 결혼식룩',
-    publisher: '옆집언니 김팀장',
-  },
-];
+import { YoutubeItem, YoutubeItemProps } from './YoutubeItem';
+import { useEffect, useState } from 'react';
+import { getTrendArchive } from '../../api/trend';
 
 export const YoutubeArchive = () => {
+  const [data, setData] = useState<YoutubeItemProps[]>([]);
+
+  const snsType = 'YOUTUBE';
+  const trendKwd = '원피스';
+
+  useEffect(() => {
+    getTrendArchive({ trendKwd, snsType })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data.contentInfoResponseList);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <Card title="유튜브 콘텐츠 아카이브">
       <ContentsWrapper>
-        <LengthTitle>총 {dum.length}개의 콘텐츠</LengthTitle>
+        <LengthTitle>총 {data.length}개의 콘텐츠</LengthTitle>
         <YoutubeGridWrapper>
-          {dum.map((item, idx) => {
+          {data.map((item, idx) => {
             return (
               <YoutubeItem
                 key={idx}
