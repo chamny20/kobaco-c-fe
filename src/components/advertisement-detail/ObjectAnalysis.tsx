@@ -45,6 +45,7 @@ export const ObjectAnalysis = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
+    console.log(e);
   };
 
   const [placeInfo, setPlaceInfo] = useState();

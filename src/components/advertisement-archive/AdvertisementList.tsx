@@ -82,9 +82,11 @@ export const AdvertisementList = ({
   // pagination
   const itemsPerPage = 16;
   const [page, setPage] = useState<number>(1);
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
+    console.log(e);
   };
 
   const startIndex = (page - 1) * itemsPerPage;

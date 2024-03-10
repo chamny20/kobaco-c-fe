@@ -28,6 +28,7 @@ export const ScrapPage = () => {
   const [sortType, setSortType] = useState<string>('LATEST');
 
   console.log(filterData, moodData, expressionQuery, moodQuery, sortType);
+  console.log(setKwdVal, setMoodType, setExpressionType);
 
   useEffect(() => {
     getScrappedAdvertisementList({

@@ -31,6 +31,7 @@ const CustomTabs = ({ tabs }: { tabs: ReturnType<typeof getTabProps>[] }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    console.log(event);
   };
 
   return (
