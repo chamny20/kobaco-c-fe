@@ -8,6 +8,8 @@ import {
   Area,
 } from 'recharts';
 import { getTrendTime } from '../../api/trend';
+import { Modal } from '../common-components/Modal';
+import modal from '../../assets/chart/modalGraph.png';
 
 const KeywordChart = () => {
   const [chartData, setChartData] = useState([]);
@@ -38,6 +40,13 @@ const KeywordChart = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const [selectedMonth, setSelectedMonth] = useState<boolean>(false);
+
+  // YAxis 클릭 이벤트 처리 함수
+  const handleYAxisClick = () => {
+    setSelectedMonth(true);
+  };
 
   return (
     <>
@@ -73,8 +82,17 @@ const KeywordChart = () => {
           fillOpacity={1}
           fill="url(#colorUv)"
           dot={{ stroke: '#D33B4D', strokeWidth: 2, r: 2 }}
+          onClick={() => handleYAxisClick()}
         />
       </AreaChart>
+      {selectedMonth && (
+        <Modal open={selectedMonth} onClose={() => setSelectedMonth(false)}>
+          <Modal.Top onClick={() => setSelectedMonth(false)} title="검색량" />
+          <Modal.Body>
+            <img src={modal} alt="" />
+          </Modal.Body>
+        </Modal>
+      )}
     </>
   );
 };
