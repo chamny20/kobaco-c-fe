@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { InstaArchive } from '../components/sns/InstaArchive';
 import { YoutubeArchive } from '../components/sns/YoutubeArchive';
 import { NaverArchive } from '../components/sns/NaverArchive';
+import { RelatedKeyword } from './RelatedKeyword';
 
 export const TestChaemin = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -70,6 +71,8 @@ export const TestChaemin = () => {
           ]}
         /> */}
       </div>
+
+      <RelatedKeyword />
 
       {/* <div style={{ width: '800px', height: '500px', margin: '0 auto' }}>
         <ResponsiveBullet
