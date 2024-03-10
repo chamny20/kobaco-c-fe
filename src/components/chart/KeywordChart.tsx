@@ -10,6 +10,7 @@ import {
 import { getTrendTime } from '../../api/trend';
 import { Modal } from '../common-components/Modal';
 import modal from '../../assets/chart/modalGraph.png';
+import styled from 'styled-components';
 
 const KeywordChart = () => {
   const [chartData, setChartData] = useState([]);
@@ -89,12 +90,17 @@ const KeywordChart = () => {
         <Modal open={selectedMonth} onClose={() => setSelectedMonth(false)}>
           <Modal.Top onClick={() => setSelectedMonth(false)} title="검색량" />
           <Modal.Body>
-            <img src={modal} alt="" />
+            <StyledImg src={modal} alt="" />
           </Modal.Body>
         </Modal>
       )}
     </>
   );
 };
+
+export const StyledImg = styled.img`
+  object-fit: cover;
+  width: 800px;
+`;
 
 export default KeywordChart;
