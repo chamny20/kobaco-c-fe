@@ -7,6 +7,7 @@ import {
   expressionCategory,
 } from '../../components/common-components/SelectFilter/SelectFilter';
 import styled from 'styled-components';
+import { moodCategory } from '../../components/common-components/SelectFilter/MoodType';
 
 export const ScrapPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,6 +19,15 @@ export const ScrapPage = () => {
 
   const [advScrappedData, setAdvScrappedData] = useState();
   const [keyword, setKeyword] = useState<string>('');
+
+  const [filterData, setFilterData] = useState(expressionCategory);
+  const [moodData, setMoodData] = useState(moodCategory);
+  const [expressionQuery, setExpressionQuery] = useState<string[]>([]);
+  const [moodQuery, setMoodQuery] = useState<string[]>([]);
+
+  const [sortType, setSortType] = useState<string>('LATEST');
+
+  console.log(filterData, moodData, expressionQuery, moodQuery, sortType);
 
   useEffect(() => {
     getScrappedAdvertisementList({
@@ -44,20 +54,28 @@ export const ScrapPage = () => {
           onChange={(e) => setKeyword(e.target.value)}
           size="sm"
           style={{ width: '400px' }}
+          onClick={() => console.log('')}
         />
 
         <FilterBox>
           <SelectFilter
             placeholder="표정 분석"
             filterData={expressionCategory}
+            setFilterData={setFilterData}
+            setQuery={setExpressionQuery}
           />
           <SelectFilter
             placeholder="영상 분위기 분석"
             filterData={expressionCategory}
+            setFilterData={setMoodData}
+            setQuery={setMoodQuery}
           />
         </FilterBox>
       </div>
-      <AdvertisementList data={advScrappedData ?? []} />
+      <AdvertisementList
+        data={advScrappedData ?? []}
+        setSortType={setSortType}
+      />
     </ScrapPageWrapper>
   );
 };

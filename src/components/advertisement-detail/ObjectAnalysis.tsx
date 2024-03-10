@@ -41,6 +41,8 @@ export function CustomTabPanel(props: TabPanelProps) {
 export const ObjectAnalysis = () => {
   const [tab, setTab] = useState(0);
   const [category, setCategory] = useState<string>('person');
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleChange = (e: React.SyntheticEvent, newValue: number) => {
     setTab(newValue);
   };
