@@ -8,6 +8,11 @@ import { Card } from '../../components/common-components/Card/Card';
 import { CardGraph } from './GraphCard';
 import InstaChart from '../../components/chart/InstaChart';
 import TagGraph from '../../components/chart/YoutubeChart';
+import { RelatedKeyword } from '../../test/RelatedKeyword';
+import { InstaArchive } from '../../components/sns/InstaArchive';
+import { YoutubeItem } from '../../components/sns/YoutubeItem';
+import { YoutubeArchive } from '../../components/sns/YoutubeArchive';
+import { NaverArchive } from '../../components/sns/NaverArchive';
 
 interface SnsTabProps {
   activeTab: number;
@@ -31,6 +36,7 @@ const SnsTab: React.FC<SnsTabProps> = () => {
                   <InstaChart />
                 </CardGraph>
               </Card>
+              <InstaArchive />
             </InnerContainer>
           </StyledContainer>
         </div>
@@ -44,13 +50,14 @@ const SnsTab: React.FC<SnsTabProps> = () => {
           <StyledContainer>
             <InnerContainer>
               <Card
-                title="인스타그램 연관 해시태그"
-                subTitle="검색한 키워드에 관련한 해시태그를 제공합니다."
+                title="유튜브 연관 해시태그"
+                subTitle="검색한 키워드에 대한 유튜브 연관 키워드를 제공합니다."
               >
-                <CardGraph title="연관 해시태그 키워드 TOP 10">
-                  <TagGraph />
+                <CardGraph title="연관 키워드">
+                  <RelatedKeyword />
                 </CardGraph>
               </Card>
+              <YoutubeArchive />
             </InnerContainer>
           </StyledContainer>
         </div>
@@ -61,6 +68,11 @@ const SnsTab: React.FC<SnsTabProps> = () => {
       content: (
         <div>
           <NaverBanner />
+          <StyledContainer>
+            <InnerContainer>
+              <NaverArchive />
+            </InnerContainer>
+          </StyledContainer>
         </div>
       ),
     },

@@ -10,6 +10,7 @@ import AgeData from '../../components/chart/AgeData';
 import WeekData from '../../components/chart/WeekData';
 import { CardGraph } from './GraphCard';
 import KeywordChart from '../../components/chart/KeywordChart';
+import { KeywordCompare } from '../searchAnalysis/KeywordCompare';
 
 interface ChartContainerProps {
   rightAlign?: boolean;
@@ -76,6 +77,7 @@ export const GraphCard: React.FC<MyComponentProps> = () => {
             </ChartContainer>
           </CardGraph>
         </Card>
+        <KeywordCompare />
       </InnerContainer>
     </StyledContainer>
   );

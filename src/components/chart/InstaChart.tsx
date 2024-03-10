@@ -10,11 +10,11 @@ import {
 } from 'recharts';
 
 const data = [
-  { name: '원피스1', uv: 1300, pv: 2400, amt: 2400 },
-  { name: '원피스2', uv: 300, pv: 2400, amt: 2400 },
-  { name: '원피스3', uv: 700, pv: 2400, amt: 2400 },
-  { name: '원피스4', uv: 500, pv: 2400, amt: 2400 },
-  { name: '원피스5', uv: 200, pv: 2400, amt: 2400 },
+  { name: '투피스', uv: 1300, pv: 2400, amt: 2400 },
+  { name: '데이트', uv: 300, pv: 2400, amt: 2400 },
+  { name: '상견례', uv: 700, pv: 2400, amt: 2400 },
+  { name: '여친룩', uv: 500, pv: 2400, amt: 2400 },
+  { name: '바지', uv: 200, pv: 2400, amt: 2400 },
 ];
 
 const InstaChart = () => {
