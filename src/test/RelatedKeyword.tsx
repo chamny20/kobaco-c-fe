@@ -53,9 +53,10 @@ export const MainCircle = styled.div`
   font-weight: 500;
   line-height: 180%; /* 115.2px */
   letter-spacing: -1.28px;
-  margin-top: 60px;
+  margin-top: 0px;
   margin-left: 40px;
   z-index: 999;
+  margin-bottom: 50px;
 `;
 
 export const SubCircle1 = styled.div`
