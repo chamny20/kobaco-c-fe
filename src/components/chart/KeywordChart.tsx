@@ -42,8 +42,8 @@ const KeywordChart = () => {
   return (
     <>
       <AreaChart
-        width={730}
-        height={350}
+        width={1100}
+        height={694}
         data={chartData}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
       >

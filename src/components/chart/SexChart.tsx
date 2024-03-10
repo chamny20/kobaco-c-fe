@@ -38,9 +38,9 @@ const SexChart: React.FC = () => {
 
   const getDefaultColor = (genderType: string) => {
     switch (genderType) {
-      case 'FEMALE':
+      case '여성':
         return '#D33B4D';
-      case 'MALE':
+      case '남성':
         return '#81A5DA';
       default:
         return '#999999';
@@ -48,17 +48,18 @@ const SexChart: React.FC = () => {
   };
 
   return (
-    <div style={{ width: '400px', height: '300px' }}>
+    <div style={{ width: '271px', height: '271px' }}>
       <PieChart
         data={chartData}
-        radius={30}
-        lineWidth={48}
+        radius={50}
+        lineWidth={50}
         label={({ dataEntry }) => `${Math.round(dataEntry.value ?? 0)}%`}
         labelPosition={80}
         labelStyle={{
           fontSize: '5px',
           fill: '#ffffff',
         }}
+        //style={{ width: '100%', height: '100%' }}
       />
     </div>
   );

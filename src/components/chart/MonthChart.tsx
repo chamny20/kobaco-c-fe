@@ -49,7 +49,7 @@ const MonthChart = () => {
 
   return (
     <>
-      <BarChart width={620.76} height={383} data={chartData}>
+      <BarChart width={480.76} height={383} data={chartData}>
         <XAxis dataKey="month" stroke="#A0A0A0" />
         <YAxis
           tickFormatter={(value) => `${value}%`}
