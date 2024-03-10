@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import logo from '../../assets/kobaco_logo.png';
 import { useNavigate } from 'react-router-dom';
+import { HeaderDropdown } from './HeaderDropdown';
+import { useState } from 'react';
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -9,15 +11,32 @@ export const Header = () => {
     navigate(page);
   };
 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
   return (
     <HeaderContainer>
       <Container>
         <div className="left-box">
           <img src={logo} alt="kobaco" onClick={() => spaceTo('/')} />
           <div className="wrapper-left">
-            <div onClick={() => spaceTo('/trend')}>트렌드 분석</div>
-            <div onClick={() => spaceTo('/adv-archive')}>광고 아카이브</div>
-            <div onClick={() => spaceTo('/')}>광고 만들기</div>
+            <NavItem
+              onMouseEnter={() => setDropdownVisible(true)}
+              onClick={() => spaceTo('/trend')}
+            >
+              트렌드 분석
+            </NavItem>
+            <div
+              onClick={() => spaceTo('/adv-archive')}
+              onMouseEnter={() => setDropdownVisible(true)}
+            >
+              광고 아카이브
+            </div>
+            <div
+              onClick={() => spaceTo('/')}
+              onMouseEnter={() => setDropdownVisible(true)}
+            >
+              광고 만들기
+            </div>
           </div>
         </div>
 
@@ -33,6 +52,21 @@ export const Header = () => {
           </div>
         </div>
       </Container>
+      {/* {dropdownVisible && (
+        <HeaderDropdown
+          onMouseEnter={() => setDropdownVisible(true)}
+          onMouseLeave={() => setDropdownVisible(false)}
+        />
+      )} */}
+
+      {dropdownVisible && (
+        <HeaderDropdownContainer visible={dropdownVisible}>
+          <HeaderDropdown
+            onMouseEnter={() => setDropdownVisible(true)}
+            onMouseLeave={() => setDropdownVisible(false)}
+          />
+        </HeaderDropdownContainer>
+      )}
     </HeaderContainer>
   );
 };
@@ -46,10 +80,10 @@ export const HeaderContainer = styled.div`
   -ms-use-select: none;
   user-select: none;
 
-  border: 1px solid black;
+  border-bottom: 1px solid ${(props) => props.theme.gray_05};
   width: 100%;
   height: 100px;
-  padding: 0px 20px;
+  /* padding: 0px 20px; */
   box-sizing: border-box;
   background-color: white;
 `;
@@ -118,4 +152,39 @@ export const Container = styled.div`
       }
     }
   }
+`;
+
+export const NavItem = styled.div`
+  position: relative;
+`;
+
+const slideIn = keyframes`
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: auto;
+    opacity: 1;
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    height: auto;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+`;
+
+export const HeaderDropdownContainer = styled.div<{ visible: boolean }>`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid ${(props) => props.theme.gray_05};
+  animation: ${({ visible }) => (visible ? slideIn : slideOut)} 0.3s ease-in-out;
 `;
