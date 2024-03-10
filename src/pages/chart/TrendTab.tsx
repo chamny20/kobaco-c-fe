@@ -46,23 +46,28 @@ const Container = styled.div`
 `;
 
 const StyledTabs = styled(Tabs)`
-  margin-top: auto;
-  margin-bottom: -50px;
+  /* margin-top: auto; */
+  /* margin-bottom: -50px; */
   .MuiTabs-indicator {
     background-color: #d33b4d;
   }
 `;
 
 const StyledTab = styled(Tab)`
-  font-size: 20px;
   &.Mui-selected {
     font-weight: 700 !important;
     color: #000000 !important;
+    font-size: 20px;
+    font-family: 'Pretendard';
   }
   &.Mui-selected:not(.Mui-focusVisible) {
     background-color: transparent;
+    font-size: 20px;
+    font-family: 'Pretendard';
   }
   &:not(.Mui-selected) {
     font-weight: 500;
+    font-size: 20px;
+    font-family: 'Pretendard';
   }
 `;

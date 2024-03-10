@@ -24,7 +24,7 @@ export const Banner: React.FC<MyComponentProps> = () => {
 const StyledContainer = styled.div`
   background: rgba(248, 248, 248, 0.97);
   width: 100vw;
-  padding: 100px 0px;
+  padding: 50px 0px;
   box-sizing: border-box;
 `;
 

@@ -86,7 +86,6 @@ export const GraphCard: React.FC<MyComponentProps> = () => {
 const StyledContainer = styled.div`
   background: rgba(248, 248, 248, 0.97);
   width: 100vw;
-  padding: 100px 0px;
   box-sizing: border-box;
 `;
 
@@ -94,6 +93,7 @@ const InnerContainer = styled.div`
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  margin-bottom: 100px;
   display: grid;
   gap: 50px;
   grid-template-rows: auto auto;

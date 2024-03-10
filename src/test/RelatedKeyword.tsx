@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import line from './line.png';
 
@@ -104,7 +103,7 @@ export const SubCircle2 = styled.div`
   line-height: 180%;
   letter-spacing: -0.64px;
   position: absolute;
-  top: -60px;
+  top: -90px;
   left: -10px;
   z-index: 999;
 `;
@@ -123,7 +122,7 @@ export const SubCircle3 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: -180px;
+  top: -200px;
   left: 270px;
   z-index: 999;
   font-family: Pretendard;
@@ -149,7 +148,7 @@ export const SubCircle4 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: 340px;
+  top: 330px;
   left: 600px;
   z-index: 999;
   font-size: 32px;
@@ -162,8 +161,8 @@ export const SubCircle4 = styled.div`
 
 export const SubCircle5 = styled.div`
   display: inline-flex;
-  max-width: 140px;
-  height: 140px;
+  max-width: 130px;
+  height: 130px;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -224,8 +223,8 @@ export const SubCircle7 = styled.div`
   border-radius: 100%;
   color: var(--White, #fff);
   position: absolute;
-  top: 100px;
-  right: -240px;
+  top: 110px;
+  right: -250px;
   z-index: 999;
   font-size: 32px;
   font-style: normal;
@@ -237,8 +236,8 @@ export const SubCircle7 = styled.div`
 
 export const SubCircle8 = styled.div`
   display: inline-flex;
-  max-width: 120px;
-  height: 120px;
+  max-width: 100px;
+  height: 100px;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
@@ -250,10 +249,10 @@ export const SubCircle8 = styled.div`
   background: var(--red-red-0280, #dc6271);
   color: var(--White, #fff);
   position: absolute;
-  top: 360px;
-  right: 240px;
+  top: 370px;
+  right: 255px;
   z-index: 999;
-  font-size: 32px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 500;
   line-height: 180%; /* 57.6px */

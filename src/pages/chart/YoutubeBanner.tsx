@@ -6,13 +6,12 @@ interface MyComponentProps {}
 
 const StyledContainer = styled.div`
   background: rgba(248, 248, 248, 0.97);
-  width: 100vw;
-  padding: 100px 0px;
+  width: 100%;
+  padding-top: 50px;
   box-sizing: border-box;
 `;
 
 const InnerContainer = styled.div`
-  width: 80%;
   max-width: 1300px;
   margin: 0 auto;
 `;
@@ -20,7 +19,8 @@ const InnerContainer = styled.div`
 const InsideContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: 30px;
+  padding: 30px 0px;
+  box-sizing: border-box;
   background: #d33b4d;
   border-radius: 20px;
   overflow: hidden;
