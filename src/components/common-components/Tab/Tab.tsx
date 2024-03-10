@@ -28,9 +28,10 @@
 // const CustomTabs = ({ tabs }: { tabs: ReturnType<typeof getTabProps>[] }) => {
 //   const [value, setValue] = React.useState(0);
 
-//   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-//     setValue(newValue);
-//   };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
 
 //   return (
 //     <Box sx={{ width: '100%' }}>

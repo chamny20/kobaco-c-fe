@@ -28,6 +28,7 @@ export const CardContainer = styled.div`
   background: #fff;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.07);
   font-style: normal;
+  margin: 0 auto;
 
   .title-box {
     display: flex;

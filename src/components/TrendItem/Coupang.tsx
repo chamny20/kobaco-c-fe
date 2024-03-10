@@ -30,14 +30,22 @@ export const Coupang = () => {
   const selectItems = [
     '여성패션',
     '남성패션',
-    '가구/인테리어',
-    '더미1',
-    '더미2',
-    '더미1',
-    '더미2',
-    '더미3',
-    '더미4',
-    '더미5',
+    '식품',
+    '가구/홈인테리어',
+    '가전/디지털',
+    '문구/오피스',
+    '생활용품',
+    '뷰티',
+    '스포츠/레저',
+    '헬스/건강식품',
+    '출산/유아동',
+    '유아동패션',
+    '주방용품',
+    '반려동물',
+    '완구/취미',
+    '자동차용품',
+    '도서/CD/DVD',
+    '여행',
   ];
 
   const rankData = [
@@ -45,27 +53,27 @@ export const Coupang = () => {
       selectedItem: '여성패션',
       data: [
         { id: 1, value: '반팔 티셔츠' },
-        { id: 2, value: '여성 티셔츠' },
-        { id: 3, value: 'ㄴㄴ 티셔츠' },
-        { id: 4, value: 'ㄴㄴ 티셔츠' },
-        { id: 5, value: 'ㅁㅁ 티셔츠' },
-        { id: 6, value: 'ㅍ 티셔츠' },
-        { id: 7, value: '2 티셔츠' },
-        { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
-        { id: 9, value: 'ㅁㅋ 티셔츠' },
-        { id: 10, value: 'ㅌㅌ 티셔츠' },
+        { id: 2, value: '샌들' },
+        { id: 3, value: '원피스' },
+        { id: 4, value: '니트' },
+        { id: 5, value: '바지' },
+        { id: 6, value: '구두' },
+        { id: 7, value: '슬랙스' },
+        // { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
+        // { id: 9, value: 'ㅁㅋ 티셔츠' },
+        // { id: 10, value: 'ㅌㅌ 티셔츠' },
       ],
     },
     {
       selectedItem: '남성패션',
       data: [
-        { id: 1, value: '남성 티셔츠' },
-        { id: 2, value: '남성 티셔츠' },
-        { id: 3, value: 'ㄴㄴ 남성' },
-        { id: 4, value: 'ㄴㄴ 남성' },
-        { id: 5, value: 'ㅁㅁ 남성' },
-        { id: 6, value: 'ㅍ 티셔츠' },
-        { id: 7, value: '2 티셔츠' },
+        { id: 1, value: '반팔 티셔츠' },
+        { id: 2, value: '샌들' },
+        { id: 3, value: '원피스' },
+        { id: 4, value: '니트' },
+        { id: 5, value: '바지' },
+        { id: 6, value: '구두' },
+        { id: 7, value: '슬랙스' },
         { id: 8, value: 'ㄴㅇㄹ 티셔츠' },
         { id: 9, value: 'ㅁㅋ 티셔츠' },
         { id: 10, value: 'ㅌㅌ 티셔츠' },
@@ -94,8 +102,9 @@ export const Coupang = () => {
             onChange={handleChange}
             MenuProps={MenuProps}
             displayEmpty
+            sx={{ fontFamily: 'Pretendard' }}
           >
-            <MenuItem disabled value="">
+            <MenuItem disabled value="" sx={{ fontFamily: 'Pretendard' }}>
               카테고리를 선택하세요.
             </MenuItem>
             {selectItems.map((item, idx) => {
@@ -103,6 +112,7 @@ export const Coupang = () => {
                 <MenuItem
                   value={item}
                   key={idx}
+                  sx={{ fontFamily: 'Pretendard' }}
                   style={{ padding: '15px', boxSizing: 'border-box' }}
                 >
                   {item}
@@ -112,28 +122,30 @@ export const Coupang = () => {
           </Select>
         </FormControl>
       </Box>
-      <RankCard>
-        <RankDataContainer>
-          {filteredData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="rank-item"
-                style={
-                  item.id === 1
-                    ? { color: '#d33b4d', fontWeight: '700' }
-                    : item.id < 4
-                      ? { color: '#373D49', fontWeight: '700' }
-                      : { color: '#909090', fontWeight: '500' }
-                }
-              >
-                <span>{item.id}</span>
-                <span>{item.value}</span>
-              </div>
-            );
-          })}
-        </RankDataContainer>
-      </RankCard>
+      {item && (
+        <RankCard>
+          <RankDataContainer>
+            {filteredData.map((item) => {
+              return (
+                <div
+                  key={item.id}
+                  className="rank-item"
+                  style={
+                    item.id === 1
+                      ? { color: '#d33b4d', fontWeight: '700' }
+                      : item.id < 4
+                        ? { color: '#373D49', fontWeight: '700' }
+                        : { color: '#909090', fontWeight: '500' }
+                  }
+                >
+                  <span>{item.id}</span>
+                  <span>{item.value}</span>
+                </div>
+              );
+            })}
+          </RankDataContainer>
+        </RankCard>
+      )}
     </BasicCardContainer>
   );
 };
