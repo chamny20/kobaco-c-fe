@@ -25,6 +25,8 @@ import {
 } from '../../components/advertisement-detail/AdvExpression';
 import { ScrollContainer } from '../../components/animation/ScrollContainer';
 import { ObjectAnalysis } from '../../components/advertisement-detail/ObjectAnalysis';
+import { BreadContainer } from '../adv-archive/AdvSearchBanner';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export const AdvDetailPage = () => {
   const { advertisementId } = useParams();
@@ -79,7 +81,18 @@ export const AdvDetailPage = () => {
 
   return (
     <ScrollContainer>
-      <div>
+      <Wrapper>
+        <BreadContainer>
+          <span className="first-black">광고 아카이브</span>
+          <span className="arrow-black-icon">
+            <ArrowForwardIosIcon />
+          </span>
+          <span className="first-black">광고 분석</span>
+          <span className="arrow-red-icon">
+            <ArrowForwardIosIcon />
+          </span>
+          <span className="third-red">광고 상세보기</span>
+        </BreadContainer>
         <AdvDetailPageContainer>
           <div>
             <AdvInfo data={infoData as AdvInfoProps} />
@@ -95,7 +108,7 @@ export const AdvDetailPage = () => {
           </div>
         </AdvDetailPageContainer>
         <ObjectAnalysis />
-      </div>
+      </Wrapper>
     </ScrollContainer>
   );
 };
@@ -104,7 +117,8 @@ export const AdvDetailPageContainer = styled.div`
   margin: 0 auto;
   display: flex;
   max-width: 1300px;
-  padding: 40px 0px;
+  padding: 50px 0px;
+  margin-top: 20px;
   box-sizing: border-box;
   gap: 32px;
 `;
@@ -112,5 +126,10 @@ export const AdvDetailPageContainer = styled.div`
 export const Divider = styled.div`
   border: 1px solid ${(props) => props.theme.gray_05};
   margin: 30px 0px;
+  box-sizing: border-box;
+`;
+
+export const Wrapper = styled.div`
+  padding-top: 40px;
   box-sizing: border-box;
 `;
