@@ -30,7 +30,11 @@ const SnsTab: React.FC<SnsTabProps> = () => {
                 title="인스타그램 연관 해시태그"
                 subTitle="검색한 키워드에 관련한 해시태그를 제공합니다."
               >
-                <CardGraph title="연관 해시태그 키워드 TOP 5">
+                <CardGraph
+                  title="연관 해시태그 키워드 TOP 5"
+                  subTitle="를 가장 많이 태그했네요!"
+                  additionalText="투피스"
+                >
                   <InstaChart />
                 </CardGraph>
               </Card>
@@ -68,7 +72,12 @@ const SnsTab: React.FC<SnsTabProps> = () => {
           <NaverBanner />
           <StyledContainer>
             <InnerContainer>
-              <NaverArchive />
+              <Card
+                title="네이버 콘텐츠 아카이브"
+                subTitle="검색한 키워드 기준 최근 30일 내 발행 된 네이버 최신 콘텐츠(블로그, 뉴스)를 제공합니다."
+              >
+                <NaverArchive />
+              </Card>
             </InnerContainer>
           </StyledContainer>
         </div>
