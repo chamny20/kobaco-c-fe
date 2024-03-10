@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import FullTab from '../../components/common-components/FullTab';
 import { InstaBanner } from './InstaBanner';
@@ -9,7 +9,6 @@ import { CardGraph } from './GraphCard';
 import InstaChart from '../../components/chart/InstaChart';
 import { RelatedKeyword } from '../../test/RelatedKeyword';
 import { InstaArchive } from '../../components/sns/InstaArchive';
-import { YoutubeItem } from '../../components/sns/YoutubeItem';
 import { YoutubeArchive } from '../../components/sns/YoutubeArchive';
 import { NaverArchive } from '../../components/sns/NaverArchive';
 

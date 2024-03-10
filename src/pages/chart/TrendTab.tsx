@@ -15,6 +15,7 @@ export const TrendTab: React.FC<TrendTabProps> = ({
     if (newValue !== activeTab) {
       onTabChange(newValue);
     }
+    console.log(event);
   };
 
   return (
