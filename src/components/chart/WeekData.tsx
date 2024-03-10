@@ -43,7 +43,7 @@ const WeekData: React.FC<WeekDataProps> = ({ onMaxRatioChange = () => {} }) => {
     fetchData();
   }, []);
 
-  return <div>{maxRatioDay}</div>;
+  return <div>{maxRatioDay}요일</div>;
 };
 
 export default WeekData;

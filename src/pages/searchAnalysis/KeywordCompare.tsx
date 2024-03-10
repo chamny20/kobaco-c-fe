@@ -167,4 +167,8 @@ export const DateWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  p {
+    font-weight: 700;
+  }
 `;

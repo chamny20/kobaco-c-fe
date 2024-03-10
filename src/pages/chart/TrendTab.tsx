@@ -23,7 +23,6 @@ export const TrendTab: React.FC<TrendTabProps> = ({
         <StyledTabs value={activeTab} onChange={handleTabChange}>
           <StyledTab label="검색 성향 분석" />
           <StyledTab label="SNS 트렌드" />
-          {/* Add more tabs as needed */}
         </StyledTabs>
       </Container>
     </PopularItemContainer>

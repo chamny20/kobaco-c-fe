@@ -32,6 +32,8 @@ const InnerContainer = styled.div`
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 `;
 
 const InsideContainer = styled.div`

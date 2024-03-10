@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AdvertiseItemProps, AdvertisementItem } from './AdvertisementItem';
-import { Menu, MenuItem } from '@mui/material';
-import { useState } from 'react';
+import { Menu, MenuItem, Pagination, Stack } from '@mui/material';
+import { Dispatch, SetStateAction, useState } from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
@@ -56,7 +56,13 @@ export const dummyData = [
   },
 ];
 
-export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
+export const AdvertisementList = ({
+  data,
+  setSortType,
+}: {
+  data: AdvertiseItemProps[];
+  setSortType: Dispatch<SetStateAction<string>>;
+}) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -64,13 +70,30 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
   };
   const handleClose = (selectedSort: string) => {
     setSort(selectedSort);
+    if (selectedSort === '최신순') {
+      setSortType('LATEST');
+    } else {
+      setSortType('RELATION');
+    }
     setAnchorEl(null);
   };
   const [sort, setSort] = useState<string>('최신순');
 
+  // pagination
+  const itemsPerPage = 16;
+  const [page, setPage] = useState<number>(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleChange = (e: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedData = data.slice(startIndex, endIndex);
+
   return (
     <AdvertisementListContainer>
-      <div>
+      <div className="sort-box">
         <CustomButton
           id="basic-button"
           aria-controls={open ? 'basic-menu' : undefined}
@@ -111,19 +134,46 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
         </Menu>
       </div>
       <ListWrapper>
-        {data.map((item) => {
+        {displayedData.map((item) => {
           return (
-            <AdvertisementItem
-              key={item.advertisementId}
-              title={item.title}
-              videoUrl={item.videoUrl}
-              createdAt={item.createdAt}
-              isArchived={item.isArchived}
-              time={item.time}
-            />
+            <div key={item.advertisementId}>
+              <AdvertisementItem
+                advertisementId={item.advertisementId}
+                key={item.advertisementId}
+                title={item.title}
+                videoUrl={item.videoUrl}
+                createdAt={item.createdAt}
+                isArchived={item.isArchived}
+                time={item.time}
+                topExpression={item.topExpression}
+                moodInfo={item.moodInfo}
+              />
+            </div>
           );
         })}
       </ListWrapper>
+      <Stack
+        spacing={2}
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: '70px',
+
+          '& .MuiPaginationItem-page': {
+            '&.Mui-selected': {
+              backgroundColor: '#dc6271',
+              color: 'white',
+            },
+          },
+        }}
+      >
+        <Pagination
+          count={Math.ceil(data.length / itemsPerPage)}
+          page={page}
+          onChange={handleChange}
+        />
+      </Stack>
     </AdvertisementListContainer>
   );
 };
@@ -131,10 +181,17 @@ export const AdvertisementList = ({ data }: { data: AdvertiseItemProps[] }) => {
 export const AdvertisementListContainer = styled.div`
   max-width: 1300px;
   width: 100%;
-  border: 1px solid green;
   margin: 0 auto;
-  padding: 120px 0px;
+  padding-top: 20px;
+  padding-bottom: 120px;
   box-sizing: border-box;
+
+  .sort-box {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 export const ListWrapper = styled.div`

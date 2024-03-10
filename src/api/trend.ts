@@ -31,3 +31,13 @@ export const getTrendPerson = async ({ trendKwd }: { trendKwd: string }) => {
   });
   return res;
 };
+
+// 트렌드 성별 & 나이 분석 조회
+export const getTrendArchive = async ({ trendKwd }: { trendKwd: string }) => {
+  const res = await api.get(`/api/trend/`, {
+    params: {
+      trendKwd,
+    },
+  });
+  return res;
+};

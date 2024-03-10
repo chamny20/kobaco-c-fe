@@ -8,12 +8,20 @@ const sizeStyles: Record<InputSize, ReturnType<typeof css>> = {
     height: 54px;
     padding: 15px;
     border-radius: 8px;
+    font-size: 16px;
+    &::placeholder {
+      font-size: 16px;
+    }
   `,
   lg: css`
     height: 80px;
     padding: 15px 30px;
     border-radius: 20px;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.07);
+    font-size: 20px;
+    &::placeholder {
+      font-size: 20px;
+    }
   `,
 };
 
@@ -21,7 +29,7 @@ export const Input = forwardRef<
   HTMLInputElement,
   PropsWithChildren<InputProps>
 >((props, ref) => {
-  const { value, placeholder, onChange, size, style } = props;
+  const { value, placeholder, onChange, size, style, onClick } = props;
 
   return (
     <div
@@ -42,8 +50,15 @@ export const Input = forwardRef<
         value={value}
         onChange={onChange}
         size={size}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            onClick();
+          }
+        }}
       />
-      <InputButton size={size}>검색</InputButton>
+      <InputButton size={size} onClick={onClick}>
+        검색
+      </InputButton>
     </div>
   );
 });
@@ -55,18 +70,20 @@ export const StyledInput = styled.input<{ size?: InputSize }>`
   width: 100%;
   ${({ size }) => size && sizeStyles[size || 'lg']}
   padding:0px 54px;
+  /* font-size: 20px; */
 
   &:focus {
     outline: none;
     border-color: ${(props) => props.theme.red_01};
   }
-  &::placeholder {
-    font-size: 16px;
-  }
+  /* &::placeholder {
+    font-size: 20px;
+  } */
 `;
 
 export const InputButton = styled.button<{ size?: InputSize }>`
   position: absolute;
+  cursor: pointer;
   right: 20px;
   color: white;
   border-radius: 8px;

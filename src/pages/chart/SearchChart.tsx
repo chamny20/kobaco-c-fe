@@ -4,6 +4,7 @@ import { SearchBanner } from '../trend/SearchBanner';
 import { GraphCard } from './Graphs';
 import { Banner } from './SnsBanner';
 import { TrendTab } from './TrendTab';
+import SnsTab from './SnsTab';
 
 export const SearchChartPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -25,9 +26,9 @@ export const SearchChartPage: React.FC = () => {
         </>
       )}
       {activeTab === 1 && (
-        <ScrollContainer>
-          <Banner />
-        </ScrollContainer>
+        <>
+          <SnsTab activeTab={activeTab} onTabChange={handleTabChange} />
+        </>
       )}
     </>
   );
