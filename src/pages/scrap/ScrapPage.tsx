@@ -71,13 +71,13 @@ export const ScrapPage = () => {
         <FilterBox>
           <SelectFilter
             placeholder="표정 분석"
-            filterData={expressionCategory}
+            filterData={filterData}
             setFilterData={setFilterData}
             setQuery={setExpressionQuery}
           />
           <SelectFilter
             placeholder="영상 분위기 분석"
-            filterData={expressionCategory}
+            filterData={moodData}
             setFilterData={setMoodData}
             setQuery={setMoodQuery}
           />
