@@ -20,12 +20,8 @@ export const SearchChartPage: React.FC = () => {
       <TrendTab activeTab={activeTab} onTabChange={handleTabChange} />
       {activeTab === 0 && (
         <>
-          <ScrollContainer>
-            <Banner />
-          </ScrollContainer>
-          <ScrollContainer>
-            <GraphCard />
-          </ScrollContainer>
+          <Banner />
+          <GraphCard />
         </>
       )}
       {activeTab === 1 && (
