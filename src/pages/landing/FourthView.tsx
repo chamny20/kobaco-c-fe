@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { ScrollContainer } from '../../components/animation/ScrollContainer';
 import FullTab from '../../components/common-components/FullTab';
-import trend1 from '../../assets/landing/trend1.png';
-import trend2 from '../../assets/landing/trend2.png';
+import trend1 from '../../assets/landing/newtrend1.png';
+import trend2 from '../../assets/landing/newtrend2.png';
 import arc1 from '../../assets/landing/arc1.png';
 import arc2 from '../../assets/landing/arc2.png';
 import arc3 from '../../assets/landing/arc3.png';
